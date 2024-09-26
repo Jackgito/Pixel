@@ -1,0 +1,10 @@
+Main menu:
+
+Start game:
+Options:
+Quit Game
+
+
+Remove all debugging code in the end
+Platforming + top down inside walls
+Bomb force click, skill tree

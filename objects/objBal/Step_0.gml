@@ -1,0 +1,1 @@
+dragAndThrow("circle");

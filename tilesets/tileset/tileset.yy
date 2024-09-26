@@ -1,0 +1,48 @@
+{
+  "$GMTileSet":"v1",
+  "%Name":"tileset",
+  "autoTileSets":[
+    {"$GMAutoTileSet":"","%Name":"tiles","closed_edge":false,"name":"tiles","resourceType":"GMAutoTileSet","resourceVersion":"2.0","tiles":[
+        47,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,
+        37,38,39,40,41,42,43,44,45,46,
+      ],},
+  ],
+  "macroPageTiles":{
+    "SerialiseHeight":9,
+    "SerialiseWidth":12,
+    "TileCompressedData":[
+      -38,0,3,35,536870943,268435491,-9,0,3,16,15,805306384,-9,0,3,16,15,805306384,-9,0,5,16,15,805306384,
+      0,1073741865,-4,1073741840,8,1073741859,0,0,16,15,805306384,0,1073741855,-4,1073741839,8,1610612767,
+      0,0,41,31,39,0,1073741863,-4,1879048208,1,1342177315,
+    ],
+    "TileDataFormat":1,
+  },
+  "name":"tileset",
+  "out_columns":7,
+  "out_tilehborder":2,
+  "out_tilevborder":2,
+  "parent":{
+    "name":"Tile Sets",
+    "path":"folders/Tile Sets.yy",
+  },
+  "resourceType":"GMTileSet",
+  "resourceVersion":"2.0",
+  "spriteId":{
+    "name":"sprTileSet32x32",
+    "path":"sprites/sprTileSet32x32/sprTileSet32x32.yy",
+  },
+  "spriteNoExport":false,
+  "textureGroupId":{
+    "name":"Default",
+    "path":"texturegroups/Default",
+  },
+  "tileAnimationFrames":[],
+  "tileAnimationSpeed":15.0,
+  "tileHeight":32,
+  "tilehsep":16,
+  "tilevsep":16,
+  "tileWidth":32,
+  "tilexoff":0,
+  "tileyoff":0,
+  "tile_count":48,
+}

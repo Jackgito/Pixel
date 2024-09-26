@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"brightnessScripts",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"brightnessScripts",
+  "parent":{
+    "name":"General",
+    "path":"folders/Scripts/General.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"drawLightOrb",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"drawLightOrb",
+  "parent":{
+    "name":"Player",
+    "path":"folders/Scripts/Player.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

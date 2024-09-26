@@ -1,0 +1,25 @@
+{
+  "$GMSound":"",
+  "%Name":"sfxUIClick",
+  "audioGroupId":{
+    "name":"audioGroupSfx",
+    "path":"audiogroups/audioGroupSfx",
+  },
+  "bitDepth":1,
+  "bitRate":128,
+  "compression":0,
+  "conversionMode":0,
+  "duration":0.18356,
+  "name":"sfxUIClick",
+  "parent":{
+    "name":"UI",
+    "path":"folders/Sounds/Sound effects/UI.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":48000,
+  "soundFile":"sfxUIClick.wav",
+  "type":1,
+  "volume":1.0,
+}

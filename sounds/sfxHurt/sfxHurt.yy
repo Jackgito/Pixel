@@ -1,0 +1,25 @@
+{
+  "$GMSound":"",
+  "%Name":"sfxHurt",
+  "audioGroupId":{
+    "name":"audioGroupSfx",
+    "path":"audiogroups/audioGroupSfx",
+  },
+  "bitDepth":1,
+  "bitRate":128,
+  "compression":0,
+  "conversionMode":0,
+  "duration":0.079819,
+  "name":"sfxHurt",
+  "parent":{
+    "name":"Player",
+    "path":"folders/Sounds/Sound effects/Player.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"sfxHurt.wav",
+  "type":0,
+  "volume":1.0,
+}
