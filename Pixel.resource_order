@@ -1,0 +1,11 @@
+{
+  "FolderOrderSettings":[],
+  "ResourceOrderSettings":[
+    {"name":"jointIsland","order":1,"path":"objects/jointIsland/jointIsland.yy",},
+    {"name":"objCameraNew","order":1,"path":"objects/objCameraNew/objCameraNew.yy",},
+    {"name":"parentKinematic","order":1,"path":"objects/parentKinematic/parentKinematic.yy",},
+    {"name":"parentSolid","order":2,"path":"objects/parentSolid/parentSolid.yy",},
+    {"name":"rm1","order":2,"path":"rooms/rm1/rm1.yy",},
+    {"name":"rm1Older","order":1,"path":"rooms/rm1Older/rm1Older.yy",},
+  ],
+}

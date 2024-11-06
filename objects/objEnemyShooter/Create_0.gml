@@ -1,1 +1,1 @@
-instance_create_layer(x, y, "Objects", objEnemyCannon);
+instance_create_layer(x, y, "Objects", objEnemyCannon, { scale: image_xscale });

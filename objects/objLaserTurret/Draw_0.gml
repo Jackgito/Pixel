@@ -34,13 +34,13 @@ if (global.power > 0) {
 	var laserContactPointTop = physics_raycast(
 	    x, y + laserWidth, 
 	    x + dirX * laserDistance, y + dirY * laserDistance + laserWidth, 
-	    [objDynamicParent, objStaticParent, objPlayer]
+	    [parentDynamic, parentStatic, objPlayer]
 	);
 
 	var laserContactPointBottom = physics_raycast(
 	    x, y - laserWidth, 
 	    x + dirX * laserDistance, y + dirY * laserDistance - laserWidth, 
-	    [objDynamicParent, objStaticParent, objPlayer]
+	    [parentDynamic, parentStatic, objPlayer]
 	);
 
 	// Check if the top raycast hit something

@@ -13,8 +13,8 @@
     "path":"folders/Objects/Enemies.yy",
   },
   "parentObjectId":{
-    "name":"objDynamicParent",
-    "path":"objects/objDynamicParent/objDynamicParent.yy",
+    "name":"parentDynamic",
+    "path":"objects/parentDynamic/parentDynamic.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.1,
@@ -37,12 +37,12 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"sprBulletTexturless",
-    "path":"sprites/sprBulletTexturless/sprBulletTexturless.yy",
+    "name":"sprBullet",
+    "path":"sprites/sprBullet/sprBullet.yy",
   },
   "spriteMaskId":{
-    "name":"sprBulletTexturless",
-    "path":"sprites/sprBulletTexturless/sprBulletTexturless.yy",
+    "name":"sprBullet",
+    "path":"sprites/sprBullet/sprBullet.yy",
   },
   "visible":true,
 }

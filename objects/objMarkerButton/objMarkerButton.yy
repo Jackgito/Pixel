@@ -12,8 +12,8 @@
     "path":"folders/Objects/Room creation.yy",
   },
   "parentObjectId":{
-    "name":"objHybridParent",
-    "path":"objects/objHybridParent/objHybridParent.yy",
+    "name":"parentHybrid",
+    "path":"objects/parentHybrid/parentHybrid.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.0,

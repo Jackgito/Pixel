@@ -13,8 +13,8 @@
     "path":"folders/Objects/Room creation.yy",
   },
   "parentObjectId":{
-    "name":"objStaticParent",
-    "path":"objects/objStaticParent/objStaticParent.yy",
+    "name":"parentStatic",
+    "path":"objects/parentStatic/parentStatic.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.0,

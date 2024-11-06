@@ -1,4 +1,4 @@
-if (global.gravity) physics_world_gravity(0, 70);
+if (global.gravity) physics_world_gravity(0, 100);
 else physics_world_gravity(0, 0);
 
 if (game_get_speed(gamespeed_fps) != 60) {
@@ -48,7 +48,7 @@ for (var i = 1; i < 8; i++) {
             case 3: global.music = !global.music; break;
             case 4: global.textures = !global.textures; break;
             case 5: global.colors = !global.colors; break;
-            case 6: global.gravity = (global.gravity == 90) ? 0 : 90 break;
+            case 6: global.gravity = (global.gravity == 90) ? 0 : 90; break;
         }
     }
 }
@@ -68,7 +68,6 @@ else {
 
 if (global.sounds) audio_group_set_gain(audioGroupSfx, 1, 60);
 else audio_group_set_gain(audioGroupSfx, 0, 60);
-
 
 //layer_shader("Tiles", shdrBrightness);
 

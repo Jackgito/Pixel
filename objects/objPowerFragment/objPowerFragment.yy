@@ -36,8 +36,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"sprBulletTexturless",
-    "path":"sprites/sprBulletTexturless/sprBulletTexturless.yy",
+    "name":"sprBullet",
+    "path":"sprites/sprBullet/sprBullet.yy",
   },
   "spriteMaskId":null,
   "visible":true,

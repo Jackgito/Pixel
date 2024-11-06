@@ -1,3 +1,6 @@
+image_xscale = scale;
+image_yscale = scale;
+
 shootTimer = random_range(60, 120);
 shotFrequency = random_range(50, 60);
 
@@ -15,6 +18,7 @@ function shoot(targetX, targetY) {
 
 	var bulletStruct = {
 		bulletSpeed: 750,
+		scale: scale,
 		targetX: targetX,
 		targetY: targetY
 	}

@@ -13,8 +13,8 @@
     "path":"folders/Objects/Player.yy",
   },
   "parentObjectId":{
-    "name":"objDynamicParent",
-    "path":"objects/objDynamicParent/objDynamicParent.yy",
+    "name":"parentDynamic",
+    "path":"objects/parentDynamic/parentDynamic.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.1,

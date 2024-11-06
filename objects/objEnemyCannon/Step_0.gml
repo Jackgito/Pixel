@@ -1,6 +1,5 @@
 // Shoot
 var detectionRange = 900;
-
 // Step Event
 if (instance_exists(objPlayer) && global.power > 0) {
 
@@ -44,9 +43,9 @@ if (instance_exists(objPlayer) && global.power > 0) {
 
         // Optional squish effect for cannon firing animation
         if (shootTimer < shotFrequency * 0.8) {
-            squish(0.6, 0.01);
+            squish(scale * 0.6, 0.01);
         } else {
-            squish(1, 0.8);
+            squish(scale, 0.8);
         }
     }
 }

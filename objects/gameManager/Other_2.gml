@@ -5,5 +5,5 @@ draw_set_valign(fa_middle);
 window_set_size(1920, 1080);
 audio_group_load(audioGroupSfx);
 audio_group_load(audioGroupMusic);
-cursor_sprite = sprCursor
 window_set_cursor(cr_none)
+cursor_sprite = sprCursor

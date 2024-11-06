@@ -16,28 +16,28 @@ var colliderModifier = 5; // This is used to detect collision right before it ha
 
 switch (dir) {
     case "left": // left
-        collidesWithDynamic = collision_line(bbox_left - colliderModifier, bbox_top, bbox_left - colliderModifier, bbox_bottom, objDynamicParent, false, true);
+        collidesWithDynamic = collision_line(bbox_left - colliderModifier, bbox_top, bbox_left - colliderModifier, bbox_bottom, parentDynamic, false, true);
         collidesWithMarker = collision_line(bbox_right + colliderModifier, bbox_top, bbox_right + colliderModifier, bbox_bottom, objMarkerButton, false, true);
 		if (phy_position_x < originalX) phy_position_x = originalX; // Make sure the button doesn't move further than original location
         phy_position_y = originalY;
 		break;
     
     case "right": // right
-        collidesWithDynamic = collision_line(bbox_right + colliderModifier, bbox_top, bbox_right + colliderModifier, bbox_bottom, objDynamicParent, false, true);
+        collidesWithDynamic = collision_line(bbox_right + colliderModifier, bbox_top, bbox_right + colliderModifier, bbox_bottom, parentDynamic, false, true);
         collidesWithMarker = collision_line(bbox_left - colliderModifier, bbox_top, bbox_left - colliderModifier, bbox_bottom, objMarkerButton, false, true);
 		if (phy_position_x > originalX) phy_position_x = originalX;
 		phy_position_y = originalY;
         break;
     
     case "down": // down
-	    collidesWithDynamic = collision_line(bbox_left, bbox_bottom + colliderModifier, bbox_right, bbox_bottom + colliderModifier, objDynamicParent, false, true);
+	    collidesWithDynamic = collision_line(bbox_left, bbox_bottom + colliderModifier, bbox_right, bbox_bottom + colliderModifier, parentDynamic, false, true);
         collidesWithMarker = collision_line(bbox_left, bbox_top - colliderModifier, bbox_right, bbox_top - colliderModifier, objMarkerButton, false, true);
         if (phy_position_y > originalY) phy_position_y = originalY;
 		phy_position_x = originalX;
 		break;
     
     case "up": // up
-        collidesWithDynamic = collision_line(bbox_left, bbox_top - colliderModifier, bbox_right, bbox_top - colliderModifier, objDynamicParent, false, true);
+        collidesWithDynamic = collision_line(bbox_left, bbox_top - colliderModifier, bbox_right, bbox_top - colliderModifier, parentDynamic, false, true);
         collidesWithMarker = collision_line(bbox_left, bbox_bottom + colliderModifier, bbox_right, bbox_bottom + colliderModifier, objMarkerButton, false, true);
         if (phy_position_y < originalY) phy_position_y = originalY;
 		phy_position_x = originalX;

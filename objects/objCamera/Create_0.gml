@@ -1,13 +1,12 @@
-finalCamX = 0;
-finalCamY = 0;
 cameraTrailSpeed = 0.1;
 surfaceDarkness = -1;
 prevX = 0;
 prevY = 0;
 camWidth = 480
 camHeight = 270;
-lastPlayerX = 0;
-lastPlayerY = 0;
+finalCamX = clamp(objPlayer.x - camWidth / 2, 0, room_width - camWidth);
+finalCamY = clamp(objPlayer.y - camHeight * 2, 0, room_height - camHeight);
+camX = 0;
 
 // Create particle type
 particleSystem = part_system_create();

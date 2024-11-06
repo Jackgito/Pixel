@@ -3,6 +3,7 @@
   "%Name":"objBox",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
   "name":"objBox",
@@ -12,8 +13,8 @@
     "path":"folders/Objects/Room creation.yy",
   },
   "parentObjectId":{
-    "name":"objDynamicParent",
-    "path":"objects/objDynamicParent/objDynamicParent.yy",
+    "name":"parentDynamic",
+    "path":"objects/parentDynamic/parentDynamic.yy",
   },
   "persistent":false,
   "physicsAngularDamping":2.0,

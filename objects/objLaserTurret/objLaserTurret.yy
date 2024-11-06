@@ -14,8 +14,8 @@
     "path":"folders/Objects/Enemies.yy",
   },
   "parentObjectId":{
-    "name":"objStaticParent",
-    "path":"objects/objStaticParent/objStaticParent.yy",
+    "name":"parentStatic",
+    "path":"objects/parentStatic/parentStatic.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.1,

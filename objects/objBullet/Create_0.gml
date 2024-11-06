@@ -10,8 +10,8 @@ phy_linear_velocity_y = lengthdir_y(bulletSpeed, playerDirection);
 lifetime = 180;
 alphaValue = 0.8;  // Initial opacity
 
-image_xscale = 0.2;
-image_yscale = 0.2;
+image_xscale = scale;
+image_yscale = scale;
 
 // Calculate the current direction of the object
 var currentDirection = point_direction(0, 0, phy_linear_velocity_x, phy_linear_velocity_y);
@@ -22,7 +22,7 @@ function explosionHit() {
 	// Explosion force
 	part_particles_create(particleSystem, x, y, explosionParticle, 5);
 
-	with (objDynamicParent) {
+	with (parentDynamic) {
 
 	    // Calculate the distance between the explosion (other) and the object
 	    var dist = point_distance(x, y, other.x, other.y);
