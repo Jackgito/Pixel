@@ -1,28 +1,28 @@
-// Example usage:
-//with(objFade) {
-//	fadeIn = true;
-//	targetAlpha = 1;
-//}
-
-alpha = 1;
-fadeIn = false;
-targetAlpha = 0;
+alpha = 0;
+in = false;
+out = false;
+fadeRoom = false;
 color = c_black;
-targetRoom = noone;
-fadeSpeed = 0.02;
+duration = 30;
+quitGame = false;
+targetRoom = room;
 
-function fade() {
-	if (targetAlpha != alpha) {
-	    // Check if fading in or out
-	    if (fadeIn) {
-			alpha += fadeSpeed;
-			alpha = min(alpha, 1);
-	    } else {
-	        // Fade out (decrease alpha)
-	        alpha -= fadeSpeed;  // Decrement alpha by fadeSpeed
-			alpha = max(alpha, 0);
-	    }
-	} else if (targetRoom != noone) {
-		room_goto(targetRoom);
-	}
+function fadeIn(_duration = 60, _color = c_black) {
+	in = true;
+	alpha = 1;
+	duration = _duration;
+	color = _color;
+}
+
+function fadeOut(duration = 60, color = c_black, _quitGame = false) {
+	out = true;
+	alpha = 0;
+	quitGame = _quitGame;
+}
+
+function fadeToRoom(_targetRoom) {
+	fadeRoom = true;
+	out = true;
+	alpha = 0;
+	targetRoom = _targetRoom
 }

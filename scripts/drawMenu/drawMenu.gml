@@ -60,7 +60,7 @@ function drawMenu(menu, heightModifier) {
 			
 			if (mouse_check_button_pressed(mb_left) && struct_exists(item, "clickEvent")) {
 				item.clickEvent();
-				audio_play_sound(sfxUIClick, 0, false);
+				audio_play_sound(sfxMenu, 0, false);
 			}
         }
 

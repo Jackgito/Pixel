@@ -4,7 +4,11 @@ switch (menuState) {
 		drawMenu(mainMenu, heightModifier);
 	break;
 	
+	case "Controls":
+		drawMenu(controlsMenu, heightModifier * -1)
+	break;
+	
 	case "Start game":
-		drawMenu(startMenu, heightModifier);
-		break;	
+		with (objWorldMap) startDrawing = true;
+		break;
 }

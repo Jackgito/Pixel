@@ -2,14 +2,14 @@
   "$GMSound":"",
   "%Name":"musMenu",
   "audioGroupId":{
-    "name":"audioGroupMusic",
-    "path":"audiogroups/audioGroupMusic",
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
   },
   "bitDepth":1,
   "bitRate":128,
   "compression":0,
   "conversionMode":0,
-  "duration":185.54774,
+  "duration":301.968,
   "name":"musMenu",
   "parent":{
     "name":"Music",
@@ -21,5 +21,5 @@
   "sampleRate":44100,
   "soundFile":"musMenu.mp3",
   "type":0,
-  "volume":0.3,
+  "volume":1.0,
 }

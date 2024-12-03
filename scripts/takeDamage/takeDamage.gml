@@ -1,27 +1,19 @@
-function takeDamage(damageAmount = 1, screenShake = false, damageColor = NEON_RED_DARK,  timeStop = 60) {
-    if (!variable_instance_exists(self, "invulnerable") || invulnerable) exit
-	hp -= damageAmount;
-	if (hp < 1) {
-        return 0;
-    }
+// Each canBeDamaged parent has hp, damageSound and alarm that handles post damage logic
+function takeDamage(damageAmount = 1) {
+
+	    //!object_is_ancestor(object_index, parentStaticCanBeDamaged))
+	// Deal damage only to entities that can take damage (they also have hp and damageSound by default)
+	if (!object_is_ancestor(object_index, parentCanBeDamaged)) {
+	    exit;
+	}
+
+	// Don't deal damage if invulnerable
+	if (!variable_instance_exists(self, "invulnerable") || invulnerable) exit;
 	
-	audio_play_sound(sfxHurt, 1, false);
-	image_blend = damageColor;
-	if (screenShake) layer_set_visible("Shake", true);
-	invulnerable = true;
-	alarm[0] = 20;
-	show_debug_message("DAMAG")
-	return 1;
+	hp -= damageAmount;
+
+	audio_play_sound(damageSound, 1, false, 1, 0, random_range(0.9, 1));
+	
+	image_blend = NEON_RED_DARK;
+	alarm[0] = 30;
 }
-
-// Reset damage
-//image_blend = c_white;
-
-//// Turn off screen shake layer
-//layer_set_visible("Shake", false);
-
-//// Remove invulnerability
-//invulnerable = false;
-
-//// Optionally: Reset the game speed back to normal if you changed it
-//game_set_speed(fps, fps);

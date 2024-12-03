@@ -1,1 +1,0 @@
-damageAmount = 1;

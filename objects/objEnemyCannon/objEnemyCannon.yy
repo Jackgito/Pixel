@@ -31,8 +31,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"sprEnemyShooterCannonTexturless",
-    "path":"sprites/sprEnemyShooterCannonTexturless/sprEnemyShooterCannonTexturless.yy",
+    "name":"sprEnemyShooterCannon",
+    "path":"sprites/sprEnemyShooterCannon/sprEnemyShooterCannon.yy",
   },
   "spriteMaskId":null,
   "visible":true,

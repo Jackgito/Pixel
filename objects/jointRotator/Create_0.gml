@@ -1,7 +1,5 @@
 jointCreated = false;
 
-
-
 // If the dynamic object moves out of range, remove the joint
 //if (nearestDynamicObject != noone && point_distance(x, y, nearestDynamicObject.x, nearestDynamicObject.y) > 100) {
 //    if (jointCreated) {

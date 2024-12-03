@@ -1,13 +1,11 @@
-if (global.gravity) physics_world_gravity(0, 100);
-else physics_world_gravity(0, 0);
-
-if (game_get_speed(gamespeed_fps) != 60) {
-	gameSpeedTimer++;
-	if (gameSpeedTimer > 1) {
-		game_set_speed(60, gamespeed_fps);
-		gameSpeedTimer = 0;
-	}
+// Fullscreen
+if keyboard_check_pressed(vk_f12) {
+	window_set_fullscreen( !window_get_fullscreen())
+	display_reset(4, false);
+	window_set_size(1920, 1080);
 }
+
+physics_world_gravity(0, global.gravity);
 
 // Glow
 if (currentPower != global.power) { // If power changed, change glow intensity
@@ -40,6 +38,7 @@ if (currentPower != global.power) { // If power changed, change glow intensity
 
 
 // DEBUGGING
+
 for (var i = 1; i < 8; i++) {
     if (keyboard_check_pressed(ord(string(i)))) {
         switch (i) {
@@ -56,18 +55,11 @@ for (var i = 1; i < 8; i++) {
 if (keyboard_check_pressed(vk_left)) global.power -= 1;
 if (keyboard_check_pressed(vk_right)) global.power += 1;
 
-// Music and sounds
-if (global.music) {
-	if (!audio_is_playing(musMain)) audio_play_sound(musMain, 10, true);
-	audio_group_set_gain(audioGroupMusic, 1, 60);
-}
-else {
-	audio_stop_sound(musMain);
-	audio_group_set_gain(audioGroupMusic, 0, 60);
-}
 
-if (global.sounds) audio_group_set_gain(audioGroupSfx, 1, 60);
-else audio_group_set_gain(audioGroupSfx, 0, 60);
+if (global.playerDied) {
+	alarm[1] = 60;
+	global.playerDied = false;	
+}
 
 //layer_shader("Tiles", shdrBrightness);
 

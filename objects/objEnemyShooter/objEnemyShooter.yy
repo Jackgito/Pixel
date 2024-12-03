@@ -30,8 +30,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"sprTurret",
-    "path":"sprites/sprTurret/sprTurret.yy",
+    "name":"sprEnemyShooterCannon",
+    "path":"sprites/sprEnemyShooterCannon/sprEnemyShooterCannon.yy",
   },
   "spriteMaskId":null,
   "visible":true,

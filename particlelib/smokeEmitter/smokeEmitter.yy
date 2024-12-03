@@ -35,8 +35,8 @@
   "orientationRelative":false,
   "orientationWiggle":0.0,
   "parent":{
-    "name":"RebootBackup",
-    "path":"RebootBackup.yyp",
+    "name":"Pixel",
+    "path":"Pixel.yyp",
   },
   "regionH":16.0,
   "regionW":16.0,

@@ -1,9 +1,3 @@
-if keyboard_check_pressed(vk_f12) {
-	window_set_fullscreen( !window_get_fullscreen())
-	display_reset(4, false);
-	window_set_size(1920, 1080);
-}
-
 ambientParticles();
 
 if !instance_exists(objPlayer) exit;

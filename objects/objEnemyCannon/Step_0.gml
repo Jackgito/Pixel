@@ -1,5 +1,5 @@
 // Shoot
-var detectionRange = 900;
+var detectionRange = 500;
 // Step Event
 if (instance_exists(objPlayer) && global.power > 0) {
 
@@ -37,15 +37,15 @@ if (instance_exists(objPlayer) && global.power > 0) {
         // Shooting logic
         if (shootTimer > 0) shootTimer--;
         else {
-            shoot(predictedX, predictedY);  // Aim at the predicted position
+            shoot(predictedX, predictedY, shotSpeed);  // Aim at the predicted position
             shootTimer = shotFrequency;
         }
 
         // Optional squish effect for cannon firing animation
-        if (shootTimer < shotFrequency * 0.8) {
-            squish(scale * 0.6, 0.01);
-        } else {
-            squish(scale, 0.8);
-        }
+        //if (shootTimer < shotFrequency * 0.8) {
+        //    squish(scale * 0.6, 0.01);
+        //} else {
+        //    squish(scale, 0.8);
+        //}
     }
 }

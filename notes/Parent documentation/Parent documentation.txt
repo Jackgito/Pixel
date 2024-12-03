@@ -1,0 +1,9 @@
+Solid is applied to all other parents
+
+Dynamic parent should be applied to all objects that are affected by gravity
+
+Kinematic is used for objects that can be moved, but not by physics
+
+Static is used for objects that don't move
+
+CanBeDamaged is used for things that can die or be destroyed (enemies, player, some enviroment objects etc)

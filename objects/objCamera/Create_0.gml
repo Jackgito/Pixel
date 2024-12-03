@@ -23,6 +23,7 @@ part_type_direction(ambientParticle, 0, 360, 0, 0); // Move in any direction
 part_type_life(ambientParticle, 60, 240); // Lifetime of particles
 part_type_gravity(ambientParticle, 0.001, 90); // Small gravity for subtle drift
 
+
 function ambientParticles() {
 	
     // Get camera coordinates and dimensions

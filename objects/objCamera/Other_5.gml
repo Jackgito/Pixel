@@ -1,0 +1,1 @@
+if (surface_exists(surfaceDarkness)) surface_free(surfaceDarkness);

@@ -1,5 +1,10 @@
 currentPower = 1;
-gameSpeedTimer = 0; // This is used to reset the game speed after slow effect
+
+// Room name display
+textDuration = 200;
+currentRoom = room
+text = ""
+textTimer = 0;
 
 lastSave = loadLastPlayedSave();
 if (lastSave) {
@@ -8,19 +13,18 @@ if (lastSave) {
 	global.animations = true;
 	global.sounds = true;
 	global.music = false
-	global.textures = false;
+	global.textures = true;
 	global.colors = true;
-	global.gravity = 0;
-	global.power = 0;	
+	global.gravity = 90;
+	global.power = 0;
+	global.playerDied = false;
 }
 
-alarm[0] = 60; // Improved performance
+layer_set_visible("Particles", global.animations);
 
-// Fade screen from black at the beginning of the game
-with(objFade) {
-	fadeIn = true;
-	targetAlpha = 0;
-}
+// Start fade
+if (!instance_exists(objFade)) instance_create_depth(x, y, 0, objFade);
+with objFade fadeIn();
 
 #region // Layer effect
 

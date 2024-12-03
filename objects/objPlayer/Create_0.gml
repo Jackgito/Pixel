@@ -2,14 +2,14 @@
 image_xscale = 0;
 image_yscale = 0;
 size = 1;
-lastSize = 1;
+targetSize = 1;
 startingScale = 1;
-pixelCounter = 0; // This tracks how many pixels have been gathered since last size increase
 
 // Damage variables
 hp = 3;
 damageDuration = 0;
 invulnerable = false;
+global.playerDied = false;
 
 // Collision variables
 touchingLeft = false;
@@ -19,20 +19,22 @@ touchingBottom = false;
 inAir = false;
 
 // Movement variables
-jumpForce = [0, 300, 400, 800, 1500, 2000, 600, 700, 800, 900];
-movementSpeed = 60;
-maxSpeed = 250 + size * 50;
-mouseArea = 60; // How far the mouse can be so it can affect the player
+impulseForce = 350 * size;
+movementSpeed = 20 * size;
+maxSpeed = 550 + size * 50;
+mouseArea = 90; // How far the mouse can be so it can affect the player
+enableGravityMovement = false;
 
 // Set physics properties
 fixture = physics_fixture_create();
 physics_fixture_set_box_shape(fixture, sprite_width / 2 - 1, sprite_height / 2 - 1);
-physics_fixture_set_density(fixture, 0.5);
+physics_fixture_set_density(fixture, 0.6);
 physics_fixture_set_friction(fixture, 0.2);
 physics_fixture_set_linear_damping(fixture, 1);
 physics_fixture_set_angular_damping(fixture, 0.5);
 physics_fixture_set_collision_group(fixture, -1);
-boundFixture = physics_fixture_bind_ext(fixture, self, -1, -1);
+boundFixture = physics_fixture_bind_ext(fixture, self, 0, 0);
+
 
 function gravityMovement() {
 	// Variables for tracking the closest marker
@@ -83,50 +85,117 @@ function gravityMovement() {
 
 function movement() {
 
-    if (mouse_check_button(mb_right)) {
+	if (mouse_check_button(mb_right)) {
 
-        // Calculate the distance between the mouse and the player
-        var dist = point_distance(mouse_x, mouse_y, x, y);
+	    // Calculate the distance between the mouse and the player
+	    var dist = point_distance(mouse_x, mouse_y, x, y);
 
-        // If mouse is close enough to player
-        if (dist <= mouseArea) {
+	    // If mouse is within the movement area
+	    if (dist <= mouseArea) {
 
-            // Calculate direction and force based on distance
-            var dir = point_direction(mouse_x, mouse_y, x, y);
-            var maxForce = 20 + objPlayer.size * 3;
+	        // Calculate direction and force based on distance
+	        var dir = point_direction(x, y, mouse_x, mouse_y);
+       
+	        var minForce = movementSpeed / 4;
+		
+			// Calculate the base force with a 50% speed boost when on the ground
+			var groundBoost = inAir ? 0 : movementSpeed * 0.5;
+			var distanceFactor = dist / 10;
+			var force = movementSpeed + groundBoost - distanceFactor;
+		
+	        // Apply force based on the distance-scaled speed
+	        var dirX = lengthdir_x(-force, dir);
+	        var dirY = lengthdir_y(-force / 2, dir);
+	        physics_apply_force(x, y, dirX, dirY);
+	    }
+	}
 
+    // Max speed limits
+	if (phy_active) {
+	    phy_linear_velocity_x = clamp(phy_linear_velocity_x, -maxSpeed, maxSpeed);
+	    phy_linear_velocity_y = clamp(phy_linear_velocity_y, -maxSpeed, maxSpeed);
+	}
 
-            // Apply force based on how close the mouse is
-			show_debug_message(dist)
-            var dirX = lengthdir_x(movementSpeed - dist, dir);
-            var dirY = lengthdir_y(movementSpeed - dist, dir);
-            physics_apply_force(x, y, dirX, dirY / 2);
-        }
-    } else { 
-        // Deceleration
-        var deceleration = 0.1 * size;
-        
-        // Smooth deceleration for X-axis
-        if (abs(phy_linear_velocity_x) > 0) {
-            phy_linear_velocity_x -= sign(phy_linear_velocity_x) * deceleration;
-            if (abs(phy_linear_velocity_x) < deceleration) phy_linear_velocity_x = 0;
-        }
-        
-        // Smooth deceleration for Y-axis
-        if (abs(phy_linear_velocity_y) > 0) {
-            phy_linear_velocity_y -= sign(phy_linear_velocity_y) * deceleration;
-            if (abs(phy_linear_velocity_y) < deceleration) phy_linear_velocity_y = 0;
-        }
-    }
-
-    // Enforce max speed limits
-    phy_linear_velocity_x = clamp(phy_linear_velocity_x, -maxSpeed, maxSpeed);
-    phy_linear_velocity_y = clamp(phy_linear_velocity_y, -maxSpeed * 3, maxSpeed * 3);
 }
 
-hasUnlockedDoubleJump = true;
 hasUnlockedWallJump = true;
+unlockedDoubleJump = true;
 canDoubleJump = false;
+
+// Acts as jump, but can also affect other dynamic objects
+function mouseImpulse() {
+	
+	// Create jump particles at mouse
+    part_system_depth(particleSystem, 10000);
+    part_particles_create(particleSystem, mouse_x, mouse_y, clickParticle, 1);
+    part_system_depth(particleSystem, self.depth + 1);
+	
+	// Create a DS list to store the instances
+	var dsList = ds_list_create();
+
+	// Get all the instances within the radius using collision_circle_list
+	collision_circle_list(mouse_x, mouse_y, mouseArea / 2, objPlayer, false, false, dsList, false);
+
+	// Iterate through the list of instance IDs
+	if (ds_list_size(dsList) > 0) {
+		for (var i = 0; i < ds_list_size(dsList); i++) {
+		    var inst = ds_list_find_value(dsList, i); // Get the instance ID from the list
+    
+		    // Use the 'with' statement to apply force or other logic to each instance
+		    with (inst) {
+				// Calculate the distance between the mouse and player
+				var dist = point_distance(mouse_x, mouse_y, x, y);
+		
+			    // Check if player can jump && (!inAir || canDoubleJump)
+			    if (dist <= other.mouseArea) {
+        
+			        // Check if the player is grounded or using double jump
+			        //if (!inAir) {
+			        //    canDoubleJump = true;  // Allow double jump after the initial jump
+			        //} else if (canDoubleJump) {
+			        //    canDoubleJump = false; // Disable further double jumps after double jump
+			        //}
+        
+			        // Calculate direction from the mouse to the player
+			        var dir = point_direction(mouse_x, mouse_y, x, y);
+        
+			        // Scale force based on distance (closer objects receive more force)
+			        var force = other.impulseForce / max(dist, 20);
+        
+			        // Calculate force components based on direction and apply the force
+			        var dirX = lengthdir_x(force, dir);
+			        var dirY = lengthdir_y(force, dir);
+			        physics_apply_torque(dirX);
+        
+			        // Apply the jump force
+			        physics_apply_impulse(x, y, dirX, dirY);
+		
+					// Player specific
+					if (self == other) {
+				
+						// Dust particles
+					    part_system_depth(self.particleSystem, self.depth + 1);
+					    part_particles_create(self.particleSystem, x, y + sprite_height / 2, self.jumpParticle, 3);
+				
+						// Play jump sound
+						audio_play_sound(sfxPlayerJump, 3, false, 0.6, 0, random_range(0.8, 1));
+				
+						// Jump squish
+				        if (mouse_y > y) { 
+				            self.squish(0.5); 
+				        } else { 
+				            self.squish(0.5, 1); 
+				        }		
+					}
+			    }
+			}
+		}
+
+	// Clean up the DS list when done
+	ds_list_destroy(dsList);
+		
+    }
+}
 
 function wallJump() {
     var wallJumpForceX = 200 * size;
@@ -150,61 +219,22 @@ function wallJump() {
     return false;
 }
 
-function jump() {
-	
-	// Calculate the distance between the mouse and player
-	var dist = point_distance(mouse_x, mouse_y, x, y);
-	
-	// Jump particles
-	part_system_depth(particleSystem, 10000)
-	part_particles_create(particleSystem, mouse_x, mouse_y, clickParticle, 1);
-	part_system_depth(particleSystem, self.depth + 1);
-		
-	if (dist <= mouseArea) {
-		
-		show_debug_message(mouse_y < y)
-		if (mouse_y > y) { squish(0.5) } else { squish(0.5, 1) }
-		
-		if (touchingBottom || touchingLeft || touchingRight) {
-			part_system_depth(particleSystem, self.depth + 1);
-			part_particles_create(particleSystem, x, y + sprite_height / 2, jumpParticle, 3);
-		}
-	    // Calculate direction from the mouse to the current objDynamicParent instance
-	    var dir = point_direction(mouse_x, mouse_y, x, y);
-
-	    // Scale force based on distance (closer objects receive more force)
-		var force = objPlayer.jumpForce[objPlayer.size] / max(dist, 20);
-
-	    // Calculate force components based on direction and apply the force
-	    var dirX = lengthdir_x(force, dir);
-	    var dirY = lengthdir_y(force, dir);
-		physics_apply_torque(dirX);
-
-	    // Apply the force to the objDynamicParent instance
-	    physics_apply_impulse(x, y, dirX, dirY);
-	    // Play jump sound for the player and vary pitch based on force
-	    if (x == objPlayer.x) {
-	        audio_play_sound(sfxPlayerJump, 3, false, 0.6);
-	    }
-	}
-}
-    
-function playerDeath() {
+function death() {
     layer_set_visible("Shake", false);
-    audio_stop_sound(sfxPlayerReset);
+    audio_stop_sound(sfxPlayerJump);
     audio_play_sound(sfxPlayerDie, 1, false);
     instance_create_layer(x, y, "particles", objParticleBurst);
+	global.playerDied = true;
     instance_destroy();
 }
 
 resetTimer = 0;
 function reset() {
     if (keyboard_check(ord("R"))) {
-        image_xscale -= 0.01;
-        image_yscale += 0.11;
+		squish(0.5, true);
         resetTimer++;
-        if (!audio_is_playing(sfxPlayerReset)) audio_play_sound(sfxPlayerReset, 3, false);
-        if (resetTimer >= 120) playerDeath();
+        if (!audio_is_playing(sfxPlayerReset)) audio_play_sound(sfxPlayerReset, 3, false, 1, 0, 1.5);
+        if (resetTimer >= 60) death();
     } else {
         audio_stop_sound(sfxPlayerReset);
         resetTimer = 0;
@@ -213,14 +243,40 @@ function reset() {
 
 // Squish the player based on their rotation
 function squish(multiplier, reverse = -1) {
-	if (!global.animations) return;
-	if (image_angle > 315 || image_angle < 45 || (image_angle > 135 && image_angle < 225)) {
-		image_xscale = startingScale * (1 - multiplier * -reverse);
-		image_yscale = startingScale * (1 + multiplier * -reverse);
-	} else {
-		image_xscale = startingScale * (1 + multiplier * -reverse);
-		image_yscale = startingScale * (1 - multiplier * -reverse);
+    if (!global.animations) return;
+
+    // Normalize the angle to always be between 0 and 360
+    var normalizedAngle = image_angle % 360;
+    if (normalizedAngle < 0) normalizedAngle += 360; // Ensures positive range
+
+    // Check the normalized angle for squishing
+    if ((normalizedAngle >= 315 || normalizedAngle < 45) || (normalizedAngle >= 135 && normalizedAngle < 225)) {
+        image_xscale = startingScale * (1 - multiplier * -reverse);
+        image_yscale = startingScale * (1 + multiplier * -reverse);
+    } else {
+        image_xscale = startingScale * (1 + multiplier * -reverse);
+        image_yscale = startingScale * (1 - multiplier * -reverse);
+    }
+}
+
+function manageSize() {
+	// Change size
+	// Variables to store target size and the lerp speed
+	var lerpSpeed = 0.1;
+	var sizeChange = 0.1;
+
+	if (keyboard_check_pressed(vk_up)) {
+	    // Set the target size to a larger value when the UP key is pressed
+	    targetSize = size + sizeChange;
 	}
+
+	if (keyboard_check_pressed(vk_down)) {
+	    // Set the target size to a smaller value when the DOWN key is pressed
+	    targetSize = size - sizeChange;
+	}
+
+	// Interpolate the size smoothly towards the target size
+	size = lerp(size, targetSize, lerpSpeed);	
 }
 
 #region // Particles

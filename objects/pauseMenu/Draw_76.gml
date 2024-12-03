@@ -9,7 +9,7 @@ if (isPaused) {
 	surface_reset_target()
 }
 
-if (keyboard_check_pressed(vk_escape) && room == !rmMainMenu) {
+if (keyboard_check_pressed(vk_escape) && room == !roomMainMenu) {
 	if (!isPaused) {
 		isPaused = true;
 		

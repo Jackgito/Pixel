@@ -7,7 +7,6 @@ if (nearestDynamicObject != noone) {
         // Define the parameters for the revolute joint
         var wAnchorX = x; // x coordinate for the joint in the world
         var wAnchorY = y; // y coordinate for the joint in the world
-        var motor = true; // Activate the motor
         var col = false; // Allow collision between the connected objects
 
         // Create the revolute joint to make the dynamic object rotate around the rotator
@@ -21,7 +20,7 @@ if (nearestDynamicObject != noone) {
             angLimit, // Whether to limit the angle
             maxMotorTorque, // Maximum motor torque
             motorSpeed, // Motor speed
-            motor, // Activate the motor
+            enableMotor, // Activate the motor
             col // Allow collision
         );
 

@@ -8,8 +8,8 @@
   "name":"objMarkerDefault",
   "overriddenProperties":[],
   "parent":{
-    "name":"Room creation",
-    "path":"folders/Objects/Room creation.yy",
+    "name":"Markers",
+    "path":"folders/Objects/Room creation/Markers.yy",
   },
   "parentObjectId":{
     "name":"parentStatic",

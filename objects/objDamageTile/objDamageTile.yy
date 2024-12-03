@@ -13,10 +13,7 @@
     "name":"Obstacles",
     "path":"folders/Objects/Room creation/Obstacles.yy",
   },
-  "parentObjectId":{
-    "name":"parentStaticDamage",
-    "path":"objects/parentStaticDamage/parentStaticDamage.yy",
-  },
+  "parentObjectId":null,
   "persistent":false,
   "physicsAngularDamping":0.0,
   "physicsDensity":0.0,
