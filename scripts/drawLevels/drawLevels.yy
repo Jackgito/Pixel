@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"drawLevels",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"drawLevels",
+  "parent":{
+    "name":"Menu",
+    "path":"folders/Scripts/Menu.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

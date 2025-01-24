@@ -1,3 +1,5 @@
+event_inherited(); // Inherit functions from canBeDamaged parent
+
 // Size variables
 image_xscale = 0;
 image_yscale = 0;
@@ -122,7 +124,7 @@ hasUnlockedWallJump = true;
 unlockedDoubleJump = true;
 canDoubleJump = false;
 
-// Acts as jump, but can also affect other dynamic objects
+// Acts as jump, (but can also affect other dynamic objects)
 function mouseImpulse() {
 	
 	// Create jump particles at mouse
@@ -140,7 +142,7 @@ function mouseImpulse() {
 	if (ds_list_size(dsList) > 0) {
 		for (var i = 0; i < ds_list_size(dsList); i++) {
 		    var inst = ds_list_find_value(dsList, i); // Get the instance ID from the list
-    
+			if (!inst.touchingBottom && global.gravity > 0) exit;
 		    // Use the 'with' statement to apply force or other logic to each instance
 		    with (inst) {
 				// Calculate the distance between the mouse and player
@@ -164,7 +166,7 @@ function mouseImpulse() {
         
 			        // Calculate force components based on direction and apply the force
 			        var dirX = lengthdir_x(force, dir);
-			        var dirY = lengthdir_y(force, dir);
+			        var dirY = lengthdir_y(force, dir) * 1.1;
 			        physics_apply_torque(dirX);
         
 			        // Apply the jump force
@@ -222,7 +224,6 @@ function wallJump() {
 function death() {
     layer_set_visible("Shake", false);
     audio_stop_sound(sfxPlayerJump);
-    audio_play_sound(sfxPlayerDie, 1, false);
     instance_create_layer(x, y, "particles", objParticleBurst);
 	global.playerDied = true;
     instance_destroy();
@@ -259,25 +260,25 @@ function squish(multiplier, reverse = -1) {
     }
 }
 
-function manageSize() {
-	// Change size
-	// Variables to store target size and the lerp speed
-	var lerpSpeed = 0.1;
-	var sizeChange = 0.1;
+//function manageSize() {
+//	// Change size
+//	// Variables to store target size and the lerp speed
+//	var lerpSpeed = 0.1;
+//	var sizeChange = 0.1;
 
-	if (keyboard_check_pressed(vk_up)) {
-	    // Set the target size to a larger value when the UP key is pressed
-	    targetSize = size + sizeChange;
-	}
+//	if (keyboard_check_pressed(vk_up)) {
+//	    // Set the target size to a larger value when the UP key is pressed
+//	    targetSize = size + sizeChange;
+//	}
 
-	if (keyboard_check_pressed(vk_down)) {
-	    // Set the target size to a smaller value when the DOWN key is pressed
-	    targetSize = size - sizeChange;
-	}
+//	if (keyboard_check_pressed(vk_down)) {
+//	    // Set the target size to a smaller value when the DOWN key is pressed
+//	    targetSize = size - sizeChange;
+//	}
 
-	// Interpolate the size smoothly towards the target size
-	size = lerp(size, targetSize, lerpSpeed);	
-}
+//	// Interpolate the size smoothly towards the target size
+//	size = lerp(size, targetSize, lerpSpeed);	
+//}
 
 #region // Particles
 particleSystem = part_system_create();
@@ -291,7 +292,6 @@ part_type_speed(damageParticle, 5 * size, 8 * size, 0, 0);
 part_type_colour1(damageParticle, c_white);
 part_type_alpha3(damageParticle, 1, 0.5, 0);
 part_type_life(damageParticle, 20, 30);
-
 
 clickParticle = part_type_create();
 part_type_shape(clickParticle, pt_shape_circle);

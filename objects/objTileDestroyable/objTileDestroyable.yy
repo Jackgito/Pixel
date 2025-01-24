@@ -12,7 +12,10 @@
     "name":"Room creation",
     "path":"folders/Objects/Room creation.yy",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"parentCanBeDamaged",
+    "path":"objects/parentCanBeDamaged/parentCanBeDamaged.yy",
+  },
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.0,

@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"saveLevelCompletion",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"saveLevelCompletion",
+  "parent":{
+    "name":"Load&Save",
+    "path":"folders/Scripts/Load&Save.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

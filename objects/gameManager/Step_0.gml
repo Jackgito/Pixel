@@ -39,18 +39,18 @@ if (currentPower != global.power) { // If power changed, change glow intensity
 
 // DEBUGGING
 
-for (var i = 1; i < 8; i++) {
-    if (keyboard_check_pressed(ord(string(i)))) {
-        switch (i) {
-            case 1: global.animations = !global.animations; break;
-            case 2: global.sounds = !global.sounds; break;
-            case 3: global.music = !global.music; break;
-            case 4: global.textures = !global.textures; break;
-            case 5: global.colors = !global.colors; break;
-            case 6: global.gravity = (global.gravity == 90) ? 0 : 90; break;
-        }
-    }
-}
+//for (var i = 1; i < 8; i++) {
+//    if (keyboard_check_pressed(ord(string(i)))) {
+//        switch (i) {
+//            case 1: global.animations = !global.animations; break;
+//            case 2: global.sounds = !global.sounds; break;
+//            case 3: global.music = !global.music; break;
+//            case 4: global.textures = !global.textures; break;
+//            case 5: global.colors = !global.colors; break;
+//            case 6: global.gravity = (global.gravity == 90) ? 0 : 90; break;
+//        }
+//    }
+//}
 
 if (keyboard_check_pressed(vk_left)) global.power -= 1;
 if (keyboard_check_pressed(vk_right)) global.power += 1;
@@ -60,6 +60,8 @@ if (global.playerDied) {
 	alarm[1] = 60;
 	global.playerDied = false;	
 }
+
+
 
 //layer_shader("Tiles", shdrBrightness);
 

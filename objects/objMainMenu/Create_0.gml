@@ -1,6 +1,11 @@
 menuState = "Main"
+rooms = [room1, room2, room3];
 
 mainMenu = [
+    {
+        name: "Pixel",
+		type: "Title"
+    },
     {
         name: "Start game",
         clickEvent: function() {
@@ -23,28 +28,11 @@ mainMenu = [
     }
 ];
 
-//startMenu = [
-//    {
-//        name: "Level 1",
-//        clickEvent: function() {
-//            with objFade fadeToRoom(room1);
-//        }
-//    },
-//    {
-//        name: "Level 2",
-//        clickEvent: function() {
-//            with objFade fadeToRoom(room2);
-//        }
-//    },
-//    {
-//        name: "Level 3",
-//        clickEvent: function() {
-//            with objFade fadeToRoom(room3);
-//        }
-//    }
-//];
-
 controlsMenu = [
+    {
+        name: "Controls",
+		type: "Title"
+    },
     {
         name: "Left MB: Jump",
     },
@@ -57,6 +45,9 @@ controlsMenu = [
 	{
         name: "F12: Fullscreen",
     },
+		{
+        name: "Esc: Pause menu",
+    },
 	{
 	    name: "Back",
         clickEvent: function() {
@@ -64,6 +55,16 @@ controlsMenu = [
         }	
 	}
 ];
+
+levelsMenu = [
+	{
+	    name: "Back",
+        clickEvent: function() {
+            with (objMainMenu) menuState = "Main";
+        }	
+	}
+];
+
 
 // Create particle type
 particleSystem = part_system_create();

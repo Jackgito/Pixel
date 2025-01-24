@@ -41,11 +41,5 @@ if (instance_exists(objPlayer) && global.power > 0) {
             shootTimer = shotFrequency;
         }
 
-        // Optional squish effect for cannon firing animation
-        //if (shootTimer < shotFrequency * 0.8) {
-        //    squish(scale * 0.6, 0.01);
-        //} else {
-        //    squish(scale, 0.8);
-        //}
     }
 }

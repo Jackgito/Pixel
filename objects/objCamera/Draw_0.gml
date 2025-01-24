@@ -1,5 +1,5 @@
-if (!global.colors) shader_set(shdrDesaturation);
-else shader_reset();
+//if (!global.colors) shader_set(shdrDesaturation);
+//else shader_reset();
 
 // Check if the surface is valid, and create it if not
 if (!surface_exists(surfaceDarkness)) surfaceDarkness = surface_create(room_width, room_height);

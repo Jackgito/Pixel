@@ -1,0 +1,25 @@
+{
+  "$GMSound":"",
+  "%Name":"sfxBox",
+  "audioGroupId":{
+    "name":"audioGroupSfx",
+    "path":"audiogroups/audioGroupSfx",
+  },
+  "bitDepth":1,
+  "bitRate":128,
+  "compression":0,
+  "conversionMode":0,
+  "duration":0.804535,
+  "name":"sfxBox",
+  "parent":{
+    "name":"Objects",
+    "path":"folders/Sounds/Sound effects/Objects.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"sfxBox.wav",
+  "type":0,
+  "volume":1.0,
+}

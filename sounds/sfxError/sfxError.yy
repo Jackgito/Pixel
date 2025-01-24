@@ -1,0 +1,25 @@
+{
+  "$GMSound":"",
+  "%Name":"sfxError",
+  "audioGroupId":{
+    "name":"audioGroupSfx",
+    "path":"audiogroups/audioGroupSfx",
+  },
+  "bitDepth":1,
+  "bitRate":128,
+  "compression":0,
+  "conversionMode":0,
+  "duration":0.141565,
+  "name":"sfxError",
+  "parent":{
+    "name":"UI",
+    "path":"folders/Sounds/Sound effects/UI.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"sfxError.ogg",
+  "type":0,
+  "volume":0.5,
+}

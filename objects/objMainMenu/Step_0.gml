@@ -1,8 +1,4 @@
-//show_debug_message(menuState)
-//if (menuState) == "Start game" { 
-//	with (objWorldMap) startDrawing = true; 
-//			show_debug_message("HELLO")
-//	}
+if (menuState != "Start game") instance_destroy(objLevelSelector);
 
 // Ambient particles
 part_emitter_region(particleSystem, particleEmitter, 0, room_width, 0, room_height, ps_shape_rectangle, ps_distr_linear);

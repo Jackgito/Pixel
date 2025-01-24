@@ -13,13 +13,13 @@
     "path":"folders/Objects/Room creation.yy",
   },
   "parentObjectId":{
-    "name":"parentHybrid",
-    "path":"objects/parentHybrid/parentHybrid.yy",
+    "name":"parentDynamic",
+    "path":"objects/parentDynamic/parentDynamic.yy",
   },
   "persistent":false,
-  "physicsAngularDamping":0.1,
+  "physicsAngularDamping":0.0,
   "physicsDensity":0.2,
-  "physicsFriction":1.0,
+  "physicsFriction":0.5,
   "physicsGroup":1,
   "physicsKinematic":false,
   "physicsLinearDamping":0.0,
@@ -42,9 +42,6 @@
     "name":"sprTileAllSides",
     "path":"sprites/sprTileAllSides/sprTileAllSides.yy",
   },
-  "spriteMaskId":{
-    "name":"sprTileDynamic",
-    "path":"sprites/sprTileDynamic/sprTileDynamic.yy",
-  },
+  "spriteMaskId":null,
   "visible":true,
 }

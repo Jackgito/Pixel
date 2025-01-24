@@ -4,8 +4,8 @@ startDrawing = false;
 levelSelectConfig = {
     background: undefined,
     color: c_white,
-    hoverSound: sfxMenu,
-    clickSound: sfxMenu,
+    hoverSound: sfxClick,
+    clickSound: sfxClick,
 	levelsPerRow: 3,
     levels: [
         { 
@@ -92,7 +92,7 @@ function updateLevelSelect(levelSelectConfig) {
             // Check for a click
             if (mouse_check_button_pressed(mb_left)) {
                 audio_play_sound(levelSelectConfig.clickSound, 1, false);
-				soundManager.playMusic("gameplay");
+				musicManager.playMusic("gameplay");
 				with objFade fadeToRoom(level.roomName)
             }
         }

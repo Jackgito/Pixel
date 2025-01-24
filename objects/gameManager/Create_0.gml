@@ -1,4 +1,5 @@
 currentPower = 1;
+gameIsPaused = false;
 
 // Room name display
 textDuration = 200;
@@ -25,6 +26,49 @@ layer_set_visible("Particles", global.animations);
 // Start fade
 if (!instance_exists(objFade)) instance_create_depth(x, y, 0, objFade);
 with objFade fadeIn();
+
+function pauseGame() {
+	
+	pauseMenu = [
+    {
+        name: "Quit to main menu",
+        clickEvent: function() {
+			other.gameIsPaused = false;
+            with (objFade) fadeToRoom(roomMainMenu);
+        }
+    }
+	];
+	
+	var viewX = camera_get_view_x(view_camera[0]);
+	var viewY = camera_get_view_y(view_camera[0]);
+	var viewWidth = camera_get_view_width(view_camera[0]);
+	var viewHeight = camera_get_view_height(view_camera[0]);
+	
+	if (room != roomMainMenu) {
+		if (keyboard_check_pressed(vk_escape)) {
+			gameIsPaused = !gameIsPaused
+		}
+		
+		if (gameIsPaused) {
+			with (parentSolid) {
+				phy_active = false;
+			}
+			
+			instance_deactivate_all(true);
+			instance_activate_object(objFade);
+			draw_set_color(c_black);
+			draw_rectangle(viewX, viewY, viewX + viewWidth, viewY + viewHeight, false);
+			draw_set_color(c_white);
+			drawMenu(pauseMenu)
+
+		} else {
+			instance_activate_all();
+			with (parentSolid) {
+				phy_active = true;
+			}
+		}
+	}
+}
 
 #region // Layer effect
 

@@ -2,27 +2,27 @@
 touchingLeft = (collision_line(x, y, x - sprite_width, y, parentSolid, false, true) != noone);
 touchingRight = (collision_line(x, y, x + sprite_width, y, parentSolid, false, true) != noone);
 touchingTop = (collision_line(x, y, x, y - sprite_height, parentSolid, false, true) != noone);
-touchingBottom = (collision_line(x, y, x, y + sprite_height * 2, parentSolid, false, true) != noone);
+touchingBottom = (collision_line(x, y, x, y + sprite_height, parentSolid, false, true) != noone);
 
 // Landing squish
 if (touchingBottom && inAir) {
 	squish(0.5, 1)
 }
 
-// Determine if the player is in the air and log the state
+// Determine if the player is in the air
 if !(touchingLeft || touchingRight || touchingBottom || touchingTop) {
     inAir = true;
 } else {
     inAir = false;
 }
 
-manageSize();
+//manageSize();
 
 movement();
 
-if (keyboard_check_pressed(ord("G"))) {
-enableGravityMovement = !enableGravityMovement;
-}
+//if (keyboard_check_pressed(ord("G"))) {
+//enableGravityMovement = !enableGravityMovement;
+//}
 
 if (enableGravityMovement) gravityMovement();
 

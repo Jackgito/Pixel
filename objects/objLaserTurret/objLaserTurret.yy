@@ -15,8 +15,8 @@
     "path":"folders/Objects/Enemies.yy",
   },
   "parentObjectId":{
-    "name":"parentKinematic",
-    "path":"objects/parentKinematic/parentKinematic.yy",
+    "name":"parentCanBeDamaged",
+    "path":"objects/parentCanBeDamaged/parentCanBeDamaged.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.1,
