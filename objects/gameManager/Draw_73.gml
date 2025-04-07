@@ -1,5 +1,5 @@
 /// @description Show level name at the start
-if (textTimer > 0 && room != roomMainMenu) {
+if (textTimer > 0 && (room != roomMainMenu && room != roomEnding)) {
     // Get the camera view dimensions
     var viewX = camera_get_view_x(view_camera[0]);
     var viewY = camera_get_view_y(view_camera[0]);

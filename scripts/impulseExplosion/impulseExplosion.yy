@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"impulseExplosion",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"impulseExplosion",
+  "parent":{
+    "name":"Objects",
+    "path":"folders/Scripts/Objects.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

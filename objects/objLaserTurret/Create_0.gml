@@ -13,3 +13,6 @@ laserWidth = random_range(laserSize - 1, laserSize + 1);
 laserSound = audio_play_sound_on(audioEmitter, sfxLaser, false, 1);
 audio_sound_loop_start(laserSound, 2);
 audio_sound_loop_end(laserSound, 5);
+
+startingX = phy_position_x;
+startingY = phy_position_y;

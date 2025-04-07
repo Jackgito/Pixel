@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"moveBetweenPoints",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"moveBetweenPoints",
+  "parent":{
+    "name":"Objects",
+    "path":"folders/Scripts/Objects.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

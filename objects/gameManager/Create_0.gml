@@ -34,6 +34,7 @@ function pauseGame() {
         name: "Quit to main menu",
         clickEvent: function() {
 			other.gameIsPaused = false;
+			global.power = 0;
             with (objFade) fadeToRoom(roomMainMenu);
         }
     }
@@ -46,7 +47,8 @@ function pauseGame() {
 	
 	if (room != roomMainMenu) {
 		if (keyboard_check_pressed(vk_escape)) {
-			gameIsPaused = !gameIsPaused
+			gameIsPaused = !gameIsPaused;
+			audio_play_sound(sfxClick, 1, false);
 		}
 		
 		if (gameIsPaused) {
@@ -56,6 +58,9 @@ function pauseGame() {
 			
 			instance_deactivate_all(true);
 			instance_activate_object(objFade);
+
+			//audio_group_get_gain()
+			audio_group_stop_all(audioGroupSfx);
 			draw_set_color(c_black);
 			draw_rectangle(viewX, viewY, viewX + viewWidth, viewY + viewHeight, false);
 			draw_set_color(c_white);
@@ -96,3 +101,5 @@ fx_set_parameters(glowEffect, glowSettingsPlayer);
 layer_set_fx("Player", glowEffect);
 
 #endregion
+
+window_set_caption("Pixel")

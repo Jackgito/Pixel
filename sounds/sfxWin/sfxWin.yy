@@ -1,0 +1,25 @@
+{
+  "$GMSound":"",
+  "%Name":"sfxWin",
+  "audioGroupId":{
+    "name":"audioGroupSfx",
+    "path":"audiogroups/audioGroupSfx",
+  },
+  "bitDepth":1,
+  "bitRate":128,
+  "compression":0,
+  "conversionMode":0,
+  "duration":7.079156,
+  "name":"sfxWin",
+  "parent":{
+    "name":"Sound effects",
+    "path":"folders/Sounds/Sound effects.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"sfxWin.mp3",
+  "type":0,
+  "volume":0.9,
+}

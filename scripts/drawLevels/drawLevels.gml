@@ -38,8 +38,9 @@ function drawLevels(roomArray) {
         var row = floor(i / columns);
 
         // Calculate the position for this level
-        var xPos = startX + col * (levelWidth + hSpacing);
-        var yPos = startY + row * (levelHeight + vSpacing);
+		var xPos = startX + col * (levelWidth + hSpacing) + levelWidth / 2;
+		var yPos = startY + row * (levelHeight + vSpacing) + levelHeight / 2;
+
 
         // Create a new objLevelSelector at the calculated xPos, yPos
         var levelSelector = instance_create_layer(xPos, yPos, "MainMenu", objLevelSelector, {targetRoom: targetRoom, levelName: levelName});

@@ -7,7 +7,9 @@
   ],
   "managed":true,
   "name":"objTileDestroyable",
-  "overriddenProperties":[],
+  "overriddenProperties":[
+    {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"parentCanBeDamaged","path":"objects/parentCanBeDamaged/parentCanBeDamaged.yy",},"propertyId":{"name":"hp","path":"objects/parentCanBeDamaged/parentCanBeDamaged.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"1",},
+  ],
   "parent":{
     "name":"Room creation",
     "path":"folders/Objects/Room creation.yy",

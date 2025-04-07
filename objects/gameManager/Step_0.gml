@@ -5,8 +5,6 @@ if keyboard_check_pressed(vk_f12) {
 	window_set_size(1920, 1080);
 }
 
-physics_world_gravity(0, global.gravity);
-
 // Glow
 if (currentPower != global.power) { // If power changed, change glow intensity
 	currentPower = lerp(currentPower, global.power, 0.1);

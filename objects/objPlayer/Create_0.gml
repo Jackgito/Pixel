@@ -8,9 +8,6 @@ targetSize = 1;
 startingScale = 1;
 
 // Damage variables
-hp = 3;
-damageDuration = 0;
-invulnerable = false;
 global.playerDied = false;
 
 // Collision variables
@@ -19,24 +16,25 @@ touchingRight = false;
 touchingTop = false;
 touchingBottom = false;
 inAir = false;
+outsideTimer = 0;
 
 // Movement variables
-impulseForce = 350 * size;
-movementSpeed = 20 * size;
+impulseForce = 550 * size;
+movementSpeed = 40 * size;
 maxSpeed = 550 + size * 50;
 mouseArea = 90; // How far the mouse can be so it can affect the player
 enableGravityMovement = false;
+coyoteTimer = 0;
 
 // Set physics properties
 fixture = physics_fixture_create();
 physics_fixture_set_box_shape(fixture, sprite_width / 2 - 1, sprite_height / 2 - 1);
-physics_fixture_set_density(fixture, 0.6);
+physics_fixture_set_density(fixture, 1);
 physics_fixture_set_friction(fixture, 0.2);
 physics_fixture_set_linear_damping(fixture, 1);
 physics_fixture_set_angular_damping(fixture, 0.5);
 physics_fixture_set_collision_group(fixture, -1);
 boundFixture = physics_fixture_bind_ext(fixture, self, 0, 0);
-
 
 function gravityMovement() {
 	// Variables for tracking the closest marker
@@ -142,7 +140,7 @@ function mouseImpulse() {
 	if (ds_list_size(dsList) > 0) {
 		for (var i = 0; i < ds_list_size(dsList); i++) {
 		    var inst = ds_list_find_value(dsList, i); // Get the instance ID from the list
-			if (!inst.touchingBottom && global.gravity > 0) exit;
+			if (!inst.touchingBottom && coyoteTimer == 0 && global.gravity > 0) exit;
 		    // Use the 'with' statement to apply force or other logic to each instance
 		    with (inst) {
 				// Calculate the distance between the mouse and player
@@ -219,14 +217,6 @@ function wallJump() {
     }
     
     return false;
-}
-
-function death() {
-    layer_set_visible("Shake", false);
-    audio_stop_sound(sfxPlayerJump);
-    instance_create_layer(x, y, "particles", objParticleBurst);
-	global.playerDied = true;
-    instance_destroy();
 }
 
 resetTimer = 0;

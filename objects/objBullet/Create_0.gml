@@ -9,7 +9,7 @@ physics_fixture_delete(fixture);
 damageAmount = 1;
 
 // Calculate the direction to the target
-playerDirection = point_direction(x, y, targetX, targetY);
+playerDirection = point_direction(x, y, objPlayer.x, objPlayer.y -5);
 phy_linear_velocity_x = lengthdir_x(bulletSpeed, playerDirection);
 phy_linear_velocity_y = lengthdir_y(bulletSpeed, playerDirection);
 
@@ -23,17 +23,15 @@ var trailColors = [NEON_RED_MID, NEON_ORANGE_MID, NEON_YELLOW_LIGHT];
 var explosionColors = [NEON_RED_MID, NEON_ORANGE_MID, NEON_YELLOW_LIGHT];
 
 function explosionHit() {
-	// Explosion force
-	part_particles_create(particleSystem, x, y, explosionParticle, 5);
 
-	with (parentDynamic) {
+	with (other) {
 
 	    // Calculate the distance between the explosion (other) and the object
 	    var dist = point_distance(x, y, other.x, other.y);
-		var maxForce = sprite_width * 20;
+		var maxForce = 900;
     
-	    // Only apply force if within 100 pixels
-	    if (dist <= 100) {
+	    // Only apply force if within 150 pixels
+	    if (dist <= 150) {
         
 	        // Calculate direction
 	        var dir = point_direction(x, y, other.x, other.y);
@@ -50,7 +48,7 @@ function explosionHit() {
 	    }
 	}
 	
-	//instance_create_layer(x, y, "particles", objParticleBurst);
+	//instance_create_layer(x, y, "particles", objParticleBurst); // Explosion particles
 	instance_destroy(self);	
 }
 
@@ -58,27 +56,15 @@ particleSystem = part_system_create_layer("Particles", false);
 particleConfig =  {
 	trail: {
 	    particleShape: pt_shape_ring,
-	    particleSize: {min: 0.05, max: 0.1, change: -0.02},
-	    spd: {min: 3, max: 5, wiggle: 0},
+	    particleSize: {min: 0.05, max: 0.2, change: -0.01},
+	    spd: {min: 1, max: 2, wiggle: 0},
 	    dir: {min: currentDirection + 180, max: currentDirection + 180},
 	    grav: {amount: 0, dir: 0},
 	    colors: trailColors,
 	    alphas: [0.9, 0.7, 0.1],
-	    lifetime: {min: 20, max: 25},
-	    blend: false
-	},
-	explosion: {
-		particleShape: pt_shape_square,
-	    particleSize: {min: 0.1, max: 0.2, change: -0.01},
-	    spd: {min: 4, max: 6, wiggle: 0},
-	    dir: {min: 0, max: 360},
-	    grav: {amount: 0, dir: 0},
-	    colors: explosionColors,
-	    alphas: [0.9, 0.7, 0.1],
-	    lifetime: {min: 15, max: 25},
+	    lifetime: {min: 20, max: 35},
 	    blend: false
 	}
 }
 
 trailParticle = createParticleType(particleConfig.trail);
-explosionParticle = createParticleType(particleConfig.explosion);

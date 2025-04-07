@@ -1,6 +1,8 @@
-with objFade fadeIn();
-global.power = 0;
-audio_group_stop_all(audioGroupSfx);
-room_goto(targetRoom);
+if (!hasTriggeredExit) {
+    hasTriggeredExit = true;
 
-saveLevelCompletion(currentRoom);
+    with (objFade) fadeToRoom(other.targetRoom, 30, other.fadeColor);
+    global.power = 0;
+    audio_group_stop_all(audioGroupSfx);
+	saveLevelCompletion(currentRoom);
+}

@@ -1,4 +1,4 @@
-instance_create_layer(x, y, "Top", objCamera);
+if (!instance_exists(objCamera)) instance_create_layer(x, y, "Top", objCamera);
 
 //if (file_exists("checpoint.ini")) {
 	

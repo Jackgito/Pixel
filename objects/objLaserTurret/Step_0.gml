@@ -1,5 +1,10 @@
 if (global.power > 0) {
 	
+	// Laser turret can move between two points
+	if (endX != -1 && endY != -1) {
+		moveBetweenPoints(startingX, startingY, endX, endY, "easeInOut", 0.04)
+	}
+	
     var laserDistance = 1000;
     laserWidth = random_range(laserSize - 0.2, laserSize + 0.2);
 
@@ -72,6 +77,28 @@ if (global.power > 0) {
 		audio_sound_loop_start(laserSound, 2.8);
 		audio_sound_loop_end(laserSound, 5.8);
     }
+	
+	// Apply force to hit objects
+    var forceAmount = 0.05;
+    var hitObjects = ds_list_create();
+
+    if (laserContactPoint1 != undefined) {
+        ds_list_add(hitObjects, laserContactPoint1[0].instance);
+    }
+    if (laserContactPoint2 != undefined) {
+        ds_list_add(hitObjects, laserContactPoint2[0].instance);
+    }
+
+    for (var i = 0; i < ds_list_size(hitObjects); i++) {
+        var hitObject = hitObjects[| i];
+        if (instance_exists(hitObject) && object_is_ancestor(hitObject.object_index, parentDynamic)) {
+            with (hitObject) {
+                physics_apply_force(x, y, dirX * forceAmount, dirY * forceAmount);
+            }
+        }
+    }
+
+    ds_list_destroy(hitObjects);
 	
 } else {
     // Stop the sound if the laser is inactive

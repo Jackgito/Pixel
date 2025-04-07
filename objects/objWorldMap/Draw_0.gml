@@ -1,1 +1,0 @@
-if (startDrawing) drawLevelSelect(levelSelectConfig);

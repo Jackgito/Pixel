@@ -2,8 +2,8 @@
   "$GMSound":"",
   "%Name":"sfxPowerOrb",
   "audioGroupId":{
-    "name":"audiogroup_default",
-    "path":"audiogroups/audiogroup_default",
+    "name":"audioGroupSfx",
+    "path":"audiogroups/audioGroupSfx",
   },
   "bitDepth":1,
   "bitRate":128,

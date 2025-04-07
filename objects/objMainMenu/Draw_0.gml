@@ -10,6 +10,6 @@ switch (menuState) {
         break;
         
     case "Start game":
-		drawLevels([room1, room2, room3]);
+		drawLevels(rooms);
 		drawMenu(levelsMenu, heightModifier * 5) // Back button
 }

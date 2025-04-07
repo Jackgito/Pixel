@@ -1,8 +1,17 @@
-// Check for collisions and log each state
+
+
+// Check for collisions
 touchingLeft = (collision_line(x, y, x - sprite_width, y, parentSolid, false, true) != noone);
 touchingRight = (collision_line(x, y, x + sprite_width, y, parentSolid, false, true) != noone);
 touchingTop = (collision_line(x, y, x, y - sprite_height, parentSolid, false, true) != noone);
 touchingBottom = (collision_line(x, y, x, y + sprite_height, parentSolid, false, true) != noone);
+
+// Handle coyote timer
+if (touchingBottom) {
+    coyoteTimer = 10; // Reset coyote timer when touching the ground
+} else if (coyoteTimer > 0) {
+    coyoteTimer--; // Decrease coyote timer when not touching the ground
+}
 
 // Landing squish
 if (touchingBottom && inAir) {
@@ -26,11 +35,12 @@ movement();
 
 if (enableGravityMovement) gravityMovement();
 
-if (mouse_check_button_pressed(mb_left)) mouseImpulse();
+if (mouse_check_button_pressed(mb_left)) {
+	mouseImpulse();
+	coyoteTimer = 0;
+}
 
 reset();
-
-if (hp <= 0) death();
 
 // Reset player size after squish
 image_xscale = lerp(image_xscale, size, 0.1);

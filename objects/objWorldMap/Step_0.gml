@@ -1,1 +1,0 @@
-if (startDrawing) updateLevelSelect(levelSelectConfig);

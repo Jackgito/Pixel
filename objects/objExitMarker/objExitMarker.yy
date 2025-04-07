@@ -3,6 +3,7 @@
   "%Name":"objExitMarker",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":{"name":"objPlayer","path":"objects/objPlayer/objPlayer.yy",},"eventNum":0,"eventType":4,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
   "name":"objExitMarker",
@@ -27,15 +28,16 @@
   "physicsSensor":true,
   "physicsShape":1,
   "physicsShapePoints":[
-    {"x":0.0,"y":27.0,},
-    {"x":32.0,"y":27.0,},
-    {"x":32.0,"y":32.0,},
-    {"x":0.0,"y":32.0,},
+    {"x":0.0,"y":15.0,},
+    {"x":32.0,"y":15.0,},
+    {"x":32.0,"y":36.0,},
+    {"x":0.0,"y":36.0,},
   ],
   "physicsStartAwake":true,
   "properties":[
     {"$GMObjectProperty":"v1","%Name":"targetRoom","filters":[],"listItems":[],"multiselect":false,"name":"targetRoom","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"room1","varType":4,},
     {"$GMObjectProperty":"v1","%Name":"currentRoom","filters":[],"listItems":[],"multiselect":false,"name":"currentRoom","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"1","varType":0,},
+    {"$GMObjectProperty":"v1","%Name":"fadeColor","filters":[],"listItems":[],"multiselect":false,"name":"fadeColor","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"c_black","varType":4,},
   ],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",

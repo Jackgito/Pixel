@@ -1,5 +1,5 @@
 menuState = "Main"
-rooms = [room1, room2, room3];
+rooms = [room1, room2, room3, room4, room5];
 
 mainMenu = [
     {
@@ -69,6 +69,7 @@ levelsMenu = [
 // Create particle type
 particleSystem = part_system_create();
 particleEmitter = part_emitter_create(particleSystem);
+
 ambientParticle = part_type_create();
 
 // Set up particle appearance and behavior

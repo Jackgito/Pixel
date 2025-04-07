@@ -20,9 +20,11 @@ function fadeOut(duration = 60, color = c_black, _quitGame = false) {
 	quitGame = _quitGame;
 }
 
-function fadeToRoom(_targetRoom) {
+function fadeToRoom(_targetRoom, _duration = 60, _color = c_black) {
 	fadeRoom = true;
 	out = true;
 	alpha = 0;
+	duration = _duration;
+	color = _color;
 	targetRoom = _targetRoom
 }
