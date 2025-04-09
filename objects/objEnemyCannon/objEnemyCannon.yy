@@ -4,13 +4,14 @@
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
   "name":"objEnemyCannon",
   "overriddenProperties":[],
   "parent":{
     "name":"Enemies",
-    "path":"folders/Objects/Enemies.yy",
+    "path":"folders/Objects/Room creation/Enemies.yy",
   },
   "parentObjectId":null,
   "persistent":false,
@@ -31,8 +32,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"sprEnemyShooterCannon",
-    "path":"sprites/sprEnemyShooterCannon/sprEnemyShooterCannon.yy",
+    "name":"sprEnemyShooterCannon2",
+    "path":"sprites/sprEnemyShooterCannon2/sprEnemyShooterCannon2.yy",
   },
   "spriteMaskId":null,
   "visible":true,

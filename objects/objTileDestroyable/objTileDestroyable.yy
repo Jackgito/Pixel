@@ -9,6 +9,8 @@
   "name":"objTileDestroyable",
   "overriddenProperties":[
     {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"parentCanBeDamaged","path":"objects/parentCanBeDamaged/parentCanBeDamaged.yy",},"propertyId":{"name":"hp","path":"objects/parentCanBeDamaged/parentCanBeDamaged.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"1",},
+    {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"parentCanBeDamaged","path":"objects/parentCanBeDamaged/parentCanBeDamaged.yy",},"propertyId":{"name":"damageSound","path":"objects/parentCanBeDamaged/parentCanBeDamaged.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"undefined",},
+    {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"parentCanBeDamaged","path":"objects/parentCanBeDamaged/parentCanBeDamaged.yy",},"propertyId":{"name":"deathSound","path":"objects/parentCanBeDamaged/parentCanBeDamaged.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"sfxWallBreak",},
   ],
   "parent":{
     "name":"Room creation",

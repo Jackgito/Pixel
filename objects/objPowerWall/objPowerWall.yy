@@ -39,6 +39,7 @@
     {"$GMObjectProperty":"v1","%Name":"requiredPower","filters":[],"listItems":[],"multiselect":false,"name":"requiredPower","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"3","varType":0,},
     {"$GMObjectProperty":"v1","%Name":"orientation","filters":[],"listItems":[],"multiselect":false,"name":"orientation","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"vertical","varType":2,},
     {"$GMObjectProperty":"v1","%Name":"unlockDirection","filters":[],"listItems":[],"multiselect":false,"name":"unlockDirection","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"right","varType":2,},
+    {"$GMObjectProperty":"v1","%Name":"moveSpeed","filters":[],"listItems":[],"multiselect":false,"name":"moveSpeed","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"2.0","varType":0,},
   ],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",

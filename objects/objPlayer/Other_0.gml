@@ -1,3 +1,1 @@
-outsideTimer ++;
-
-if (outsideTimer > 30) death();
+alarm[1] = 30;

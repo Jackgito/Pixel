@@ -7,8 +7,8 @@ var camWidths = [640, 800, 1024, 1152, 1280, 1366, 1600, 1760, 1920];
 var camHeights = [360, 450, 576, 648, 720, 768, 900, 990, 1080];
 
 // Interpolate camera width and height smoothly between categories
-camWidth = lerp(camWidth, camWidths[clamp(objPlayer.size - 1, 0, array_length(camWidths) - 1)] , 0.01)
-camHeight = lerp(camHeight, camHeights[clamp(objPlayer.size - 1, 0, array_length(camWidths) - 1)], 0.01)
+camWidth = lerp(camWidth, camWidths[clamp(objPlayer.size - 1, 0, array_length(camWidths) - 1)] , 0.05)
+camHeight = lerp(camHeight, camHeights[clamp(objPlayer.size - 1, 0, array_length(camWidths) - 1)], 0.05)
 
 // Get player position and center camera based on new dimensions
 var camX = objPlayer.x - camWidth / 2;

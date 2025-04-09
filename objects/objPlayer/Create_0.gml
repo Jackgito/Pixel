@@ -87,35 +87,44 @@ function movement() {
 
 	if (mouse_check_button(mb_right)) {
 
-	    // Calculate the distance between the mouse and the player
-	    var dist = point_distance(mouse_x, mouse_y, x, y);
+		var dist = point_distance(mouse_x, mouse_y, x, y);
 
-	    // If mouse is within the movement area
-	    if (dist <= mouseArea) {
+		if (dist <= mouseArea) {
+			var dir = point_direction(x, y, mouse_x, mouse_y);
 
-	        // Calculate direction and force based on distance
-	        var dir = point_direction(x, y, mouse_x, mouse_y);
-       
-	        var minForce = movementSpeed / 4;
-		
-			// Calculate the base force with a 50% speed boost when on the ground
+			var minForce = movementSpeed / 4;
 			var groundBoost = inAir ? 0 : movementSpeed * 0.5;
 			var distanceFactor = dist / 10;
 			var force = movementSpeed + groundBoost - distanceFactor;
-		
-	        // Apply force based on the distance-scaled speed
-	        var dirX = lengthdir_x(-force, dir);
-	        var dirY = lengthdir_y(-force / 2, dir);
-	        physics_apply_force(x, y, dirX, dirY);
-	    }
+
+			var dirX = lengthdir_x(-force, dir);
+			var dirY = lengthdir_y(-force / 2, dir);
+			physics_apply_force(x, y, dirX, dirY);
+
+			// Handle no gravity spin based on mouse direction
+			if (gravity == 0) {
+				// Offset from player to mouse
+				var dx = mouse_x - x;
+				var dy = mouse_y - y;
+
+				// Rotate the offset into player's local space
+				var localX = lengthdir_x(point_distance(0, 0, dx, dy), point_direction(0, 0, dx, dy) - image_angle);
+				var localY = lengthdir_y(point_distance(0, 0, dx, dy), point_direction(0, 0, dx, dy) - image_angle);
+
+				// Spin amount is stronger if mouse is farther from center on the X axis (i.e. clicking left/right edges)
+				var torqueAmount = clamp(localX / 800, -0.02, 0.02); // Tweak divisor for feel
+
+				// Apply angular impulse
+				physics_apply_angular_impulse(torqueAmount);
+			}
+		}
 	}
 
-    // Max speed limits
+	// Clamp velocity
 	if (phy_active) {
-	    phy_linear_velocity_x = clamp(phy_linear_velocity_x, -maxSpeed, maxSpeed);
-	    phy_linear_velocity_y = clamp(phy_linear_velocity_y, -maxSpeed, maxSpeed);
+		phy_linear_velocity_x = clamp(phy_linear_velocity_x, -maxSpeed, maxSpeed);
+		phy_linear_velocity_y = clamp(phy_linear_velocity_y, -maxSpeed, maxSpeed);
 	}
-
 }
 
 hasUnlockedWallJump = true;

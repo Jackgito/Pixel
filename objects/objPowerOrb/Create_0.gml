@@ -1,4 +1,4 @@
-/// @description Makes the power orb pulse by changing its size
+// Makes the power orb pulse by changing its size
 function pulsePowerOrb() {
     // Define the pulse speed and brightness range
     var pulse_speed = 0.05; // Speed of the pulse (adjust as needed)

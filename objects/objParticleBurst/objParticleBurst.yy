@@ -9,8 +9,8 @@
   "name":"objParticleBurst",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objects",
-    "path":"folders/Objects.yy",
+    "name":"Enemies",
+    "path":"folders/Objects/Room creation/Enemies.yy",
   },
   "parentObjectId":null,
   "persistent":false,

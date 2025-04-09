@@ -1,6 +1,6 @@
 {
   "$GMSound":"",
-  "%Name":"sfxPlaceholder",
+  "%Name":"sfxWallBreak",
   "audioGroupId":{
     "name":"audioGroupSfx",
     "path":"audiogroups/audioGroupSfx",
@@ -9,8 +9,8 @@
   "bitRate":128,
   "compression":0,
   "conversionMode":0,
-  "duration":0.22059,
-  "name":"sfxPlaceholder",
+  "duration":0.847868,
+  "name":"sfxWallBreak",
   "parent":{
     "name":"Objects",
     "path":"folders/Sounds/Sound effects/Objects.yy",
@@ -19,7 +19,7 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"sfxPlaceholder.wav",
+  "soundFile":"sfxWallBreak.wav",
   "type":0,
-  "volume":1.0,
+  "volume":0.9,
 }

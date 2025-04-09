@@ -1,1 +1,0 @@
-dragAndThrow("circle");

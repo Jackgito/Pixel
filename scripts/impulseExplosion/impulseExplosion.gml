@@ -2,7 +2,9 @@
 /// @param maxRadius - The maximum radius of the explosion
 /// @param maxImpulse - The maximum impulse applied to objects
 
+// TODO: Explosion goes through walls -> FIX
 function impulseExplosion(maxRadius, maxImpulse) {
+	
     // Create a DS list to store the instances
     var dsList = ds_list_create();
 

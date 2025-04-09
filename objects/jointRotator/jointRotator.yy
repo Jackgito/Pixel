@@ -37,7 +37,7 @@
     {"$GMObjectProperty":"v1","%Name":"maxMotorTorque","filters":[],"listItems":[],"multiselect":false,"name":"maxMotorTorque","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"100000","varType":0,},
     {"$GMObjectProperty":"v1","%Name":"motorSpeed","filters":[],"listItems":[],"multiselect":false,"name":"motorSpeed","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"1","varType":0,},
     {"$GMObjectProperty":"v1","%Name":"angLimit","filters":[],"listItems":[],"multiselect":false,"name":"angLimit","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"False","varType":3,},
-    {"$GMObjectProperty":"v1","%Name":"enableMotor","filters":[],"listItems":[],"multiselect":false,"name":"enableMotor","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"true","varType":3,},
+    {"$GMObjectProperty":"v1","%Name":"requiredPower","filters":[],"listItems":[],"multiselect":false,"name":"requiredPower","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"1","varType":1,},
   ],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",

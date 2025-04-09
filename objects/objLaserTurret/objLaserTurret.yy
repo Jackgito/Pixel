@@ -12,7 +12,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"Enemies",
-    "path":"folders/Objects/Enemies.yy",
+    "path":"folders/Objects/Room creation/Enemies.yy",
   },
   "parentObjectId":{
     "name":"parentKinematic",
