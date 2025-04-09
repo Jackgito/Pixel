@@ -17,8 +17,12 @@ Trailer music:
 ArctSound
 https://pixabay.com/music/suspense-dark-suspense-documentary-205465/
 
-
 ## Pictures
 ![image](https://github.com/user-attachments/assets/02d322e2-2980-4792-9e23-96f5dcfd9cfb)
 ![image](https://github.com/user-attachments/assets/cf0eacdf-374b-4e3d-adb6-0238a69127ff)
 ![image](https://github.com/user-attachments/assets/f593d390-6a86-4e67-9282-1f30ab72aa25)
+
+## Lisence
+This project is licensed under the Creative Commons Attribution-NonCommercial 4.0 International License.
+To view a copy of this license, visit http://creativecommons.org/licenses/by-nc/4.0/.
+
