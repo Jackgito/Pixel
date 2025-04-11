@@ -45,6 +45,9 @@ controlsMenu = [
 	{
         name: "F12: Fullscreen",
     },
+	{
+        name: "L and R arrow keys: Navigate levels (not recommended)",
+    },
 		{
         name: "Esc: Pause menu",
     },

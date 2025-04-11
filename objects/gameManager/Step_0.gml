@@ -50,8 +50,8 @@ if (currentPower != global.power) { // If power changed, change glow intensity
 //    }
 //}
 
-if (keyboard_check_pressed(vk_left)) global.power -= 1;
-if (keyboard_check_pressed(vk_right)) global.power += 1;
+if (keyboard_check_pressed(vk_left)) room_goto_previous();
+if (keyboard_check_pressed(vk_right)) room_goto_next();
 
 
 if (global.playerDied) {
