@@ -20,13 +20,13 @@ if (global.power > 0) {
     laserContactPoint1 = physics_raycast(
         x + perpDirX, y + perpDirY,
         x + perpDirX + dirX * laserDistance, y + perpDirY + dirY * laserDistance,
-        [parentDynamic, parentStatic, objPlayer]
+        [parentSolidDynamic, parentSolidStatic, objPlayer]
     );
 
     laserContactPoint2 = physics_raycast(
         x - perpDirX, y - perpDirY,
         x - perpDirX + dirX * laserDistance, y - perpDirY + dirY * laserDistance,
-        [parentDynamic, parentStatic, objPlayer]
+        [parentSolidDynamic, parentSolidStatic, objPlayer]
     );
 
     // Check for closest point along the laser to the player
@@ -91,7 +91,7 @@ if (global.power > 0) {
 
     for (var i = 0; i < ds_list_size(hitObjects); i++) {
         var hitObject = hitObjects[| i];
-        if (instance_exists(hitObject) && object_is_ancestor(hitObject.object_index, parentDynamic)) {
+        if (instance_exists(hitObject) && object_is_ancestor(hitObject.object_index, parentSolidDynamic)) {
             with (hitObject) {
                 physics_apply_force(x, y, dirX * forceAmount, dirY * forceAmount);
             }

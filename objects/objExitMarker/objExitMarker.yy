@@ -13,8 +13,8 @@
     "path":"folders/Objects/Room creation/Markers.yy",
   },
   "parentObjectId":{
-    "name":"parentStatic",
-    "path":"objects/parentStatic/parentStatic.yy",
+    "name":"parentSolid",
+    "path":"objects/parentSolid/parentSolid.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.1,

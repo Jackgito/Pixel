@@ -13,8 +13,8 @@
     "path":"folders/Objects/Room creation/Joint objects.yy",
   },
   "parentObjectId":{
-    "name":"parentDynamic",
-    "path":"objects/parentDynamic/parentDynamic.yy",
+    "name":"parentSolidDynamic",
+    "path":"objects/parentSolidDynamic/parentSolidDynamic.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.8,

@@ -9,8 +9,8 @@ currentAngle = 0;      // Initial angle of the cannon
 function shoot(targetX, targetY, shotSpeed) {
 	// Calculate offset based on rotation
     var cannonLength = sprite_height;
-    var bulletX = x + lengthdir_x(cannonLength + 2, image_angle);
-    var bulletY = y + lengthdir_y(cannonLength + 2, image_angle);
+    var bulletX = x + lengthdir_x(cannonLength + 10, image_angle);
+    var bulletY = y + lengthdir_y(cannonLength + 10, image_angle);
 	image_xscale = 1.2;
 	image_yscale = 0.9;
 

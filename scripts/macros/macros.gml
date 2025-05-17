@@ -1,5 +1,6 @@
 #macro TILE_SIZE 32
 #macro DEFAULT_FRICTION 0.3
+#macro GAME_NAME "Pixel"
 
 /// Game's color palette
 // Grayscale Colors

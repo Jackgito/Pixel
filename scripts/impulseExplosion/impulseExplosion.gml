@@ -1,46 +1,49 @@
-/// @description Applies an impulse explosion at the instance's position
-/// @param maxRadius - The maximum radius of the explosion
-/// @param maxImpulse - The maximum impulse applied to objects
+/// @function impulseExplosion(xPos, yPos, strength)
 
-// TODO: Explosion goes through walls -> FIX
-function impulseExplosion(maxRadius, maxImpulse) {
-	
-    // Create a DS list to store the instances
-    var dsList = ds_list_create();
+function impulseExplosion(xPos, yPos, strength) {
+    var radius = strength * 3;
+    var hitList = ds_list_create();
+    var affectedObjects = ds_list_create(); // To track affected instances
 
-    // Get all instances within the explosion radius
-    collision_circle_list(x, y, maxRadius, all, false, true, dsList, false);
+    // Find nearby physics objects
+    collision_circle_list(xPos, yPos, radius, parentSolidDynamic, false, true, hitList, false);
 
-    // Iterate through the list of instance IDs
-    if (ds_list_size(dsList) > 0) {
-        for (var i = 0; i < ds_list_size(dsList); i++) {
-            var inst = ds_list_find_value(dsList, i); // Get the instance ID
+    for (var i = 0; i < ds_list_size(hitList); i++) {
+        var inst = hitList[| i];
 
-            // Skip non-physics objects to avoid errors
-            if (!inst.phy_active) continue;
+        // Skip if explosion is blocked by objParentSolid (not working)
+        if (collision_line(xPos, yPos, inst.x, inst.y, parentSolidStatic, true, true)) {
+            continue;
+        }
 
-            // Calculate distance from the explosion center to the instance
-            var dist = point_distance(x, y, inst.x, inst.y);
+        // Skip if the object has already been affected by the explosion
+        if (ds_list_find_index(affectedObjects, inst) != -1) {
+            continue;
+        }
 
-            // Ensure the instance is within the radius
-            if (dist <= maxRadius) {
-                with (inst) {
-                    // Calculate the direction of the impulse
-                    var angle = point_direction(other.x, other.y, x, y);
+        var dx = inst.x - xPos;
+        var dy = inst.y - yPos;
+        var dist = point_distance(xPos, yPos, inst.x, inst.y);
 
-                    // Scale the impulse based on distance (closer = stronger)
-                    var impulse = maxImpulse * (1 - (dist / maxRadius));
-                    impulse = max(impulse, 0); // Ensure impulse is not negative
+        if (dist > 0 && dist < radius) {
+            var dir = point_direction(xPos, yPos, inst.x, inst.y);
+            var falloff = 1 - (dist / radius);
 
-                    // Apply the impulse
-                    var impulseX = lengthdir_x(impulse, angle);
-                    var impulseY = lengthdir_y(impulse, angle);
-                    physics_apply_impulse(x, y, impulseX, impulseY);
-                }
+            var force = (strength * falloff);
+            var fx = lengthdir_x(force, dir);
+            var fy = lengthdir_y(force, dir);
+
+            // Apply impulse to the object
+            with (inst) {
+                physics_apply_impulse(inst.x, inst.y, fx, fy);
             }
+
+            // Mark this instance as affected by the explosion
+            ds_list_add(affectedObjects, inst);
         }
     }
 
-    // Clean up the DS list
-    ds_list_destroy(dsList);
+    // Clean up hit list and affected objects list
+    ds_list_destroy(hitList);
+    ds_list_destroy(affectedObjects);
 }

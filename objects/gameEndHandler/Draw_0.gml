@@ -28,5 +28,7 @@ draw_set_alpha(1);
 
 // Trigger the fade to the next room after the text fades in
 if (messageTimer == 460) {
-    with objFade fadeToRoom(roomMainMenu, 120, c_white);
+	with (objFade) {
+	    fadeToRoom(roomMainMenu, 120, c_white);
+	}
 }

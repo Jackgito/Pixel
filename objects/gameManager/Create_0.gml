@@ -7,19 +7,16 @@ currentRoom = room
 text = ""
 textTimer = 0;
 
-lastSave = loadLastPlayedSave();
-if (lastSave) {
-	
-} else {
-	global.animations = true;
-	global.sounds = true;
-	global.music = false
-	global.textures = true;
-	global.colors = true;
-	global.gravity = 90;
-	global.power = 0;
-	global.playerDied = false;
-}
+global.animations = true;
+global.sounds = true;
+global.music = false
+global.textures = true;
+global.colors = true;
+global.power = 0;
+global.gravity = 90;
+global.playerDied = false;
+global.dev_mode = true;
+global.playTime = 0; // in seconds
 
 layer_set_visible("Particles", global.animations);
 
@@ -33,7 +30,8 @@ function pauseGame() {
     {
         name: "Quit to main menu",
         clickEvent: function() {
-			other.gameIsPaused = false;
+			instance_activate_object(objFade);
+			instance_activate_object(self);
 			global.power = 0;
             with (objFade) fadeToRoom(roomMainMenu);
         }
@@ -64,7 +62,7 @@ function pauseGame() {
 			draw_set_color(c_black);
 			draw_rectangle(viewX, viewY, viewX + viewWidth, viewY + viewHeight, false);
 			draw_set_color(c_white);
-			drawMenu(pauseMenu)
+			drawMenu(pauseMenu);
 
 		} else {
 			instance_activate_all();
@@ -75,31 +73,4 @@ function pauseGame() {
 	}
 }
 
-#region // Layer effect
-
-glowEffect = fx_create("_effect_glow");
-glowSettingsTiles = {
-	"g_GlowRadius": 8,
-	"g_GlowQuality": 10,
-	"g_GlowIntensity": 0.2,
-	"g_GlowGamma": 0.6,
-	"g_GlowAlpha": 1
-};
-
-glowSettingsPlayer = {
-	"g_GlowRadius": min(20 + global.power * 5, 60),
-	"g_GlowQuality": 5,
-	"g_GlowIntensity": min(0.4 + global.power * 0.1, 1),
-	"g_GlowGamma": 0,
-	"g_GlowAlpha": 0.6
-}
-
-fx_set_parameters(glowEffect, glowSettingsTiles);
-fx_set_single_layer(glowEffect, true);
-layer_set_fx("Tiles", glowEffect);
-fx_set_parameters(glowEffect, glowSettingsPlayer);
-layer_set_fx("Player", glowEffect);
-
-#endregion
-
-window_set_caption("Pixel")
+window_set_caption(GAME_NAME);

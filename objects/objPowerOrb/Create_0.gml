@@ -2,8 +2,8 @@
 function pulsePowerOrb() {
     // Define the pulse speed and brightness range
     var pulse_speed = 0.05; // Speed of the pulse (adjust as needed)
-    var min_brightness = 0.5; // Minimum brightness (50%)
-    var max_brightness = 1.0; // Maximum brightness (100%)
+    var min_brightness = 0.5;
+    var max_brightness = 1.0;
     
     // Calculate the sine wave value based on the current time
     var time = current_time / 1000; // Convert time to seconds

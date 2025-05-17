@@ -1,5 +1,5 @@
 /// @function playImpactSound(sound, forceThreshold)
-/// @param {asset} sound The sound to play on impact
+/// @param sound The sound asset to play on impact
 /// @param {real} forceThreshold The minimum force required to trigger the sound
 
 function playImpactSound(sound, forceThreshold) {

@@ -1,3 +1,3 @@
-with (other) takeDamage(1);
-impulseExplosion(50, 100);
+other.takeDamage(1);
+impulseExplosion(x, y, 30);
 instance_destroy(self);

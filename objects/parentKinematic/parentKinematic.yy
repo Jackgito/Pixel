@@ -2,8 +2,8 @@
   "$GMObject":"",
   "%Name":"parentKinematic",
   "eventList":[
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":{"name":"parentDynamic","path":"objects/parentDynamic/parentDynamic.yy",},"eventNum":0,"eventType":4,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":{"name":"parentStatic","path":"objects/parentStatic/parentStatic.yy",},"eventNum":0,"eventType":4,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":{"name":"parentSolidDynamic","path":"objects/parentSolidDynamic/parentSolidDynamic.yy",},"eventNum":0,"eventType":4,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":{"name":"parentSolidStatic","path":"objects/parentSolidStatic/parentSolidStatic.yy",},"eventNum":0,"eventType":4,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","eventNum":0,"eventType":4,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,

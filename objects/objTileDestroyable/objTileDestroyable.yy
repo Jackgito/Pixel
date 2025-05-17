@@ -7,11 +7,7 @@
   ],
   "managed":true,
   "name":"objTileDestroyable",
-  "overriddenProperties":[
-    {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"parentCanBeDamaged","path":"objects/parentCanBeDamaged/parentCanBeDamaged.yy",},"propertyId":{"name":"hp","path":"objects/parentCanBeDamaged/parentCanBeDamaged.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"1",},
-    {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"parentCanBeDamaged","path":"objects/parentCanBeDamaged/parentCanBeDamaged.yy",},"propertyId":{"name":"damageSound","path":"objects/parentCanBeDamaged/parentCanBeDamaged.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"undefined",},
-    {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"parentCanBeDamaged","path":"objects/parentCanBeDamaged/parentCanBeDamaged.yy",},"propertyId":{"name":"deathSound","path":"objects/parentCanBeDamaged/parentCanBeDamaged.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"sfxWallBreak",},
-  ],
+  "overriddenProperties":[],
   "parent":{
     "name":"Room creation",
     "path":"folders/Objects/Room creation.yy",
@@ -28,7 +24,7 @@
   "physicsKinematic":false,
   "physicsLinearDamping":0.1,
   "physicsObject":true,
-  "physicsRestitution":0.1,
+  "physicsRestitution":0.0,
   "physicsSensor":false,
   "physicsShape":1,
   "physicsShapePoints":[

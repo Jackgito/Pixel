@@ -7,6 +7,13 @@ camHeight = 270;
 finalCamX = clamp(objPlayer.x - camWidth / 2, 0, room_width - camWidth);
 finalCamY = clamp(objPlayer.y - camHeight * 2, 0, room_height - camHeight);
 camX = 0;
+lightScale = 0;
+lightX = 0;
+lightY = 0;
+playerDiedTimer = 1;
+playerSize = 0;
+playerDead = true;
+alphaScale = 1;
 
 // Create particle type
 particleSystem = part_system_create();

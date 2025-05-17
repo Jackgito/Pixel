@@ -11,10 +11,7 @@
     "name":"Markers",
     "path":"folders/Objects/Room creation/Markers.yy",
   },
-  "parentObjectId":{
-    "name":"parentHybrid",
-    "path":"objects/parentHybrid/parentHybrid.yy",
-  },
+  "parentObjectId":null,
   "persistent":false,
   "physicsAngularDamping":0.0,
   "physicsDensity":0.0,

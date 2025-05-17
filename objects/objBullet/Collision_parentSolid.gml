@@ -1,2 +1,2 @@
-impulseExplosion(100, 60);
+impulseExplosion(x, y, 30);
 instance_destroy(self);

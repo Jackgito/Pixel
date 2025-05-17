@@ -19,10 +19,10 @@ inAir = false;
 outsideTimer = 0;
 
 // Movement variables
-impulseForce = 550 * size;
+impulseForce = 450 * size;
 movementSpeed = 40 * size;
-maxSpeed = 550 + size * 50;
-mouseArea = 90; // How far the mouse can be so it can affect the player
+maxSpeed = 650 + size * 50;
+mouseArea = 95; // How far the mouse can be so it can affect the player
 enableGravityMovement = false;
 coyoteTimer = 0;
 
@@ -30,11 +30,16 @@ coyoteTimer = 0;
 fixture = physics_fixture_create();
 physics_fixture_set_box_shape(fixture, sprite_width / 2 - 1, sprite_height / 2 - 1);
 physics_fixture_set_density(fixture, 1);
+physics_fixture_set_restitution(fixture, 0);
 physics_fixture_set_friction(fixture, 0.2);
 physics_fixture_set_linear_damping(fixture, 1);
 physics_fixture_set_angular_damping(fixture, 0.5);
 physics_fixture_set_collision_group(fixture, -1);
 boundFixture = physics_fixture_bind_ext(fixture, self, 0, 0);
+
+// Darkness and glow
+lightScale = 0;
+surfaceDarkness = -1;
 
 function gravityMovement() {
 	// Variables for tracking the closest marker
@@ -98,24 +103,32 @@ function movement() {
 			var force = movementSpeed + groundBoost - distanceFactor;
 
 			var dirX = lengthdir_x(-force, dir);
-			var dirY = lengthdir_y(-force / 2, dir);
+			var dirY = 0;
+			if (!inAir || global.gravity == 0) dirY = lengthdir_y(-force, dir);
+
 			physics_apply_force(x, y, dirX, dirY);
 
 			// Handle no gravity spin based on mouse direction
-			if (gravity == 0) {
-				// Offset from player to mouse
-				var dx = mouse_x - x;
-				var dy = mouse_y - y;
+			if (global.gravity == 0) {
+			    // Offset of force application (mouse or control position) from player center
+			    var dx = mouse_x - x;
+			    var dy = mouse_y - y;
+				
+				var fx = lengthdir_x(-force, dir);
+		        var fy = 0;
+		        if (!inAir) fy = lengthdir_y(-force, dir);
 
-				// Rotate the offset into player's local space
-				var localX = lengthdir_x(point_distance(0, 0, dx, dy), point_direction(0, 0, dx, dy) - image_angle);
-				var localY = lengthdir_y(point_distance(0, 0, dx, dy), point_direction(0, 0, dx, dy) - image_angle);
+			    // Vector perpendicular to the force vector
+			    var perp = fx * dy - fy * dx;
 
-				// Spin amount is stronger if mouse is farther from center on the X axis (i.e. clicking left/right edges)
-				var torqueAmount = clamp(localX / 800, -0.02, 0.02); // Tweak divisor for feel
+			    // Normalize and clamp torque for control
+			    var torque = clamp(perp / 50000, -0.1, 0.1);
+				
+				if (mouse_y < y) {
+					torque = -torque;
+				}
 
-				// Apply angular impulse
-				physics_apply_angular_impulse(torqueAmount);
+			    physics_apply_angular_impulse(torque);
 			}
 		}
 	}
@@ -131,78 +144,43 @@ hasUnlockedWallJump = true;
 unlockedDoubleJump = true;
 canDoubleJump = false;
 
-// Acts as jump, (but can also affect other dynamic objects)
+// Acts as jump
 function mouseImpulse() {
-	
-	// Create jump particles at mouse
+
+    // Create jump particles at mouse
     part_system_depth(particleSystem, 10000);
     part_particles_create(particleSystem, mouse_x, mouse_y, clickParticle, 1);
     part_system_depth(particleSystem, self.depth + 1);
-	
-	// Create a DS list to store the instances
-	var dsList = ds_list_create();
+    var dist = point_distance(mouse_x, mouse_y, x, y);
 
-	// Get all the instances within the radius using collision_circle_list
-	collision_circle_list(mouse_x, mouse_y, mouseArea / 2, objPlayer, false, false, dsList, false);
+    // Conditions to allow jump
+    if (dist <= mouseArea && coyoteTimer > 0 && global.gravity > 0) {
+		coyoteTimer = 0; // Avoid double jumps
+            
+        // Calculate direction and force
+        var dir = point_direction(mouse_x, mouse_y, x, y);
+        var force = clamp(impulseForce / max(dist, 20), 10, 100);
+		show_debug_message(force);
+        var dirX = lengthdir_x(force, dir);
+		var dirY = lengthdir_y(force, dir) * 1.5 - abs(lengthdir_x(force, dir)) * 0.25;
 
-	// Iterate through the list of instance IDs
-	if (ds_list_size(dsList) > 0) {
-		for (var i = 0; i < ds_list_size(dsList); i++) {
-		    var inst = ds_list_find_value(dsList, i); // Get the instance ID from the list
-			if (!inst.touchingBottom && coyoteTimer == 0 && global.gravity > 0) exit;
-		    // Use the 'with' statement to apply force or other logic to each instance
-		    with (inst) {
-				// Calculate the distance between the mouse and player
-				var dist = point_distance(mouse_x, mouse_y, x, y);
-		
-			    // Check if player can jump && (!inAir || canDoubleJump)
-			    if (dist <= other.mouseArea) {
-        
-			        // Check if the player is grounded or using double jump
-			        //if (!inAir) {
-			        //    canDoubleJump = true;  // Allow double jump after the initial jump
-			        //} else if (canDoubleJump) {
-			        //    canDoubleJump = false; // Disable further double jumps after double jump
-			        //}
-        
-			        // Calculate direction from the mouse to the player
-			        var dir = point_direction(mouse_x, mouse_y, x, y);
-        
-			        // Scale force based on distance (closer objects receive more force)
-			        var force = other.impulseForce / max(dist, 20);
-        
-			        // Calculate force components based on direction and apply the force
-			        var dirX = lengthdir_x(force, dir);
-			        var dirY = lengthdir_y(force, dir) * 1.1;
-			        physics_apply_torque(dirX);
-        
-			        // Apply the jump force
-			        physics_apply_impulse(x, y, dirX, dirY);
-		
-					// Player specific
-					if (self == other) {
-				
-						// Dust particles
-					    part_system_depth(self.particleSystem, self.depth + 1);
-					    part_particles_create(self.particleSystem, x, y + sprite_height / 2, self.jumpParticle, 3);
-				
-						// Play jump sound
-						audio_play_sound(sfxPlayerJump, 3, false, 0.6, 0, random_range(0.8, 1));
-				
-						// Jump squish
-				        if (mouse_y > y) { 
-				            self.squish(0.5); 
-				        } else { 
-				            self.squish(0.5, 1); 
-				        }		
-					}
-			    }
-			}
-		}
+        // Apply physics
+        physics_apply_torque(dirX);
+        physics_apply_impulse(x, y, dirX, dirY);
 
-	// Clean up the DS list when done
-	ds_list_destroy(dsList);
-		
+        // Dust particles
+        part_system_depth(particleSystem, depth + 1);
+        part_particles_create(particleSystem, x, y + sprite_height / 2, jumpParticle, 3);
+
+        // Play jump sound
+        audio_play_sound(sfxPlayerJump, 3, false, 0.6, 0, random_range(0.8, 1));
+
+        // Jump squish effect
+        if (mouse_y > y) {
+            squish(0.5);
+        } else {
+            squish(0.5, 1);
+        }
     }
 }
 
@@ -233,7 +211,7 @@ function reset() {
     if (keyboard_check(ord("R"))) {
 		squish(0.5, true);
         resetTimer++;
-        if (!audio_is_playing(sfxPlayerReset)) audio_play_sound(sfxPlayerReset, 3, false, 1, 0, 1.5);
+        if (!audio_is_playing(sfxPlayerReset)) audio_play_sound(sfxPlayerReset, 3, false, 1, 0, 1);
         if (resetTimer >= 60) death();
     } else {
         audio_stop_sound(sfxPlayerReset);

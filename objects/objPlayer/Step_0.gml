@@ -1,14 +1,27 @@
-
-
 // Check for collisions
-touchingLeft = (collision_line(x, y, x - sprite_width, y, parentSolid, false, true) != noone);
-touchingRight = (collision_line(x, y, x + sprite_width, y, parentSolid, false, true) != noone);
-touchingTop = (collision_line(x, y, x, y - sprite_height, parentSolid, false, true) != noone);
-touchingBottom = (collision_line(x, y, x, y + sprite_height, parentSolid, false, true) != noone);
+// Adjust these values as needed based on object origin and size
+// Store the object IDs to check against
+var check_ids = [parentSolid];
+
+// Raycast distance from center
+var dist_x = sprite_width / 2 + 4;
+var dist_y = sprite_height / 2 + 4;
+
+// Cast rays in each direction
+var left = physics_raycast(x, y, x - dist_x, y, check_ids);
+var right = physics_raycast(x, y, x + dist_x, y, check_ids);
+var up = physics_raycast(x, y, x, y - dist_y, check_ids);
+var down = physics_raycast(x, y, x, y + dist_y, check_ids);
+
+// Determine if touching
+touchingLeft = (left != undefined);
+touchingRight = (right != undefined);
+touchingTop = (up != undefined);
+touchingBottom = (down != undefined);
 
 // Handle coyote timer
-if (touchingBottom) {
-    coyoteTimer = 10; // Reset coyote timer when touching the ground
+if (touchingBottom && phy_speed_y > -1) {
+    coyoteTimer = 15 // Reset coyote timer when touching the ground and going down
 } else if (coyoteTimer > 0) {
     coyoteTimer--; // Decrease coyote timer when not touching the ground
 }
@@ -29,9 +42,9 @@ if !(touchingLeft || touchingRight || touchingBottom || touchingTop) {
 
 movement();
 
-//if (keyboard_check_pressed(ord("G"))) {
-//enableGravityMovement = !enableGravityMovement;
-//}
+if (keyboard_check_pressed(ord("G")) && global.dev_mode) {
+	enableGravityMovement = !enableGravityMovement;
+}
 
 if (enableGravityMovement) gravityMovement();
 

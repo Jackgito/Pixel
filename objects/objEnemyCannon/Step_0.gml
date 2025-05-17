@@ -21,7 +21,7 @@ if (instance_exists(objPlayer) && global.power > 0) {
         // Shooting logic
         if (shootTimer > 0) shootTimer--;
         else {
-            shoot(objPlayer.x, objPlayer.y, shotSpeed); // Aim at player
+            shoot(objPlayer.x, objPlayer.y + 4, shotSpeed); // Aim at player
             shootTimer = shotFrequency;
         }
     }

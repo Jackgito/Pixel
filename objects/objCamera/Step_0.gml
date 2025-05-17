@@ -1,6 +1,12 @@
 ambientParticles();
 
-if !instance_exists(objPlayer) exit;
+if !instance_exists(objPlayer) { 
+	playerDead = true;
+	exit;
+} else if (playerDead == true && instance_exists(objPlayer)) { // Teleport camera to player after they spawn
+	playerDead = false;
+	camera_set_view_pos(view_camera[0], objPlayer.x - camWidth / 2, objPlayer.y - camHeight / 2);
+}
 
 // Define arrays for camera widths and heights
 var camWidths = [640, 800, 1024, 1152, 1280, 1366, 1600, 1760, 1920];
@@ -10,7 +16,7 @@ var camHeights = [360, 450, 576, 648, 720, 768, 900, 990, 1080];
 camWidth = lerp(camWidth, camWidths[clamp(objPlayer.size - 1, 0, array_length(camWidths) - 1)] , 0.05)
 camHeight = lerp(camHeight, camHeights[clamp(objPlayer.size - 1, 0, array_length(camWidths) - 1)], 0.05)
 
-// Get player position and center camera based on new dimensions
+
 var camX = objPlayer.x - camWidth / 2;
 var camY = objPlayer.y - camHeight / 2;
 

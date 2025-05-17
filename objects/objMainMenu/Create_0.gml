@@ -3,7 +3,7 @@ rooms = [room1, room2, room3, room4, room5];
 
 mainMenu = [
     {
-        name: "Pixel",
+        name: "P I X E L",
 		type: "Title"
     },
     {
@@ -44,9 +44,6 @@ controlsMenu = [
     },
 	{
         name: "F12: Fullscreen",
-    },
-	{
-        name: "L and R arrow keys: Navigate levels (not recommended)",
     },
 		{
         name: "Esc: Pause menu",
